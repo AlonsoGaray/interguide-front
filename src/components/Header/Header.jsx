@@ -1,20 +1,26 @@
+/* eslint-disable no-console */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import { HeaderContainer, Logo, ProfileImg, LogoutContainer } from './styled';
-import SearchBar from './SearchBar';
-import LoginButton from './LoginButton';
-import LogoutButton from './LogoutButton';
+import PersonIcon from '@mui/icons-material/Person';
+import { HeaderContainer, Logo } from './styled';
+import NavItem from '../NavItem/NavItem';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import SearchBar from '../SearchBar/SearchBar';
+import LoginButton from '../LoginButton/LoginButton';
 
 const Header = () => {
   const { isAuthenticated, user } = useAuth0();
+  console.log('🚀 ~ file: Header.jsx ~ line 9 ~ Header ~ user', user);
+
   return (
     <HeaderContainer>
       <Logo>interguide</Logo>
       <SearchBar />
       {isAuthenticated ? (
-        <LogoutContainer>
-          <ProfileImg src={user?.picture} alt={user?.nickname} />
-          <LogoutButton />
-        </LogoutContainer>
+        <NavItem icon={<PersonIcon />}>
+          <DropdownMenu />
+        </NavItem>
       ) : (
         <LoginButton />
       )}
