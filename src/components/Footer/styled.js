@@ -3,13 +3,15 @@ import styled from 'styled-components';
 const FooterCont = styled.footer`
   display: flex;
   flex-direction: column;
-  padding: 45px 0 20px;
   font-size: 15px;
-  line-height: 24px;
+  line-height: 20px;
+  margin-top: 10px;
+  border-top: thin solid gray;
   color: #737373;
 
   h6 {
     color: #737373;
+    margin: 20px 0;
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 2px;

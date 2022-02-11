@@ -3,15 +3,16 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { Link } from 'react-router-dom';
 import { Dropdown, ProfileImg } from './styled';
 
-const DropdownItem = ({ children, leftIcon, handleClick }) => {
+const DropdownItem = ({ children, leftIcon, handleClick, redirect }) => {
   return (
-    <a href="#" className="menu-item" onClick={handleClick}>
+    <Link to={redirect} className="menu-item" onClick={handleClick}>
       <span className="icon-button">{leftIcon}</span>
       &nbsp;&nbsp;
       {children}
-    </a>
+    </Link>
   );
 };
 
@@ -26,12 +27,16 @@ const DropdownMenu = () => {
 
   return (
     <Dropdown>
-      <DropdownItem leftIcon={<ProfileImg src={picture} />}>
+      <DropdownItem
+        redirect="/mi-perfil"
+        leftIcon={<ProfileImg src={picture} />}
+      >
         {user.name}
         <br />
         &nbsp;&nbsp; My Profile
       </DropdownItem>
       <DropdownItem
+        redirect=""
         handleClick={() => logoutWithRedirect()}
         leftIcon={<LogoutIcon />}
       >
