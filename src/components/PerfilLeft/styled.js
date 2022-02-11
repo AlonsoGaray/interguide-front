@@ -4,7 +4,11 @@ import styled from 'styled-components';
 const SuperContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 100%;
+
+  @media (min-width: 1025px) {
+    width: 29%;
+  }
 `
 
 const DataContainer = styled.div`
