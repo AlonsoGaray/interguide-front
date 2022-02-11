@@ -1,18 +1,16 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
+import React from 'react';
 import { List, TagA } from './styled';
 
-const NavItem = ({ icon, children }) => {
-  const [open, setOpen] = useState(false);
-
+const NavItem = ({ icon, children, handleClick }) => {
   return (
     <List>
-      <TagA href="#" onClick={() => setOpen(!open)}>
+      <TagA href="#" onClick={handleClick}>
         {icon}
       </TagA>
 
-      {open && children}
+      {children}
     </List>
   );
 };
