@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Dropdown = styled.div`
   position: absolute;
   top: 58px;
-  width: 200px;
+  width: 250px;
   transform: translateX(-75%);
   background-color: #33353d;
   border: 1px solid #474a4d;
@@ -11,10 +11,15 @@ const Dropdown = styled.div`
   padding: 0.2rem;
   overflow: hidden;
 
+  .icon-button {
+    display: flex;
+    align-items: center;
+  }
+
   .menu-item {
     color: #eceeef;
     text-decoration: none;
-    height: 50px;
+    height: 62px;
     display: flex;
     align-items: center;
     border-radius: 8px;
@@ -25,15 +30,11 @@ const Dropdown = styled.div`
       background-color: #525357;
     }
   }
-
-  .icon-right {
-    margin-right: auto;
-  }
 `;
 
 const ProfileImg = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
 `;
 

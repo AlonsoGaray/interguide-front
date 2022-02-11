@@ -9,6 +9,7 @@ const DropdownItem = ({ children, leftIcon, handleClick }) => {
   return (
     <a href="#" className="menu-item" onClick={handleClick}>
       <span className="icon-button">{leftIcon}</span>
+      &nbsp;&nbsp;
       {children}
     </a>
   );
@@ -26,7 +27,9 @@ const DropdownMenu = () => {
   return (
     <Dropdown>
       <DropdownItem leftIcon={<ProfileImg src={picture} />}>
-        My Profile
+        {user.name}
+        <br />
+        &nbsp;&nbsp; My Profile
       </DropdownItem>
       <DropdownItem
         handleClick={() => logoutWithRedirect()}
