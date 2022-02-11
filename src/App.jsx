@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout/Layout';
-import './App.css';
+import MiPerfil from './pages/MiPerfil/MiPerfil';
 
 const App = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="mi-perfil" element={<MiPerfil />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

@@ -6,7 +6,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   z-index: 1000;
   width: 100%;
-  height: 60px;
+  height: 65px;
   border-bottom: thin solid gray;
 
   svg {
