@@ -8,6 +8,11 @@ const HeaderContainer = styled.header`
   width: 100%;
   height: 60px;
   border-bottom: thin solid gray;
+
+  svg {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const Logo = styled.h1`
