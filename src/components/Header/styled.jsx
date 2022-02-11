@@ -19,6 +19,25 @@ const Logo = styled.h1`
   }
 `;
 
+const LogoutContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 30vw;
+
+  @media (min-width: 630px) {
+    width: 20vw;
+  }
+
+  @media (min-width: 1025px) {
+    width: 15vw;
+  }
+`;
+
+const ProfileImg = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+
 const Button = styled.button`
   font-size: 1.5rem;
   text-decoration: none;
@@ -83,4 +102,6 @@ export {
   Button,
   SearchInputs,
   Input,
+  ProfileImg,
+  LogoutContainer,
 };
