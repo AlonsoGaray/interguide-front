@@ -27,7 +27,7 @@ const DropdownMenu = () => {
         &nbsp;&nbsp; My Profile
       </DropdownItem>
       <DropdownItem
-        redirect="/logout"
+        redirect="/"
         handleClick={() => logout(dispatch)}
         leftIcon={<LogoutIcon />}
       >
