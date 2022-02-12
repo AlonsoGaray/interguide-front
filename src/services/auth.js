@@ -37,9 +37,22 @@ const registerAccount = ({
   return fetch(`${URL_BASE}/api/users`, payload);
 };
 
+const revalidateToken = (email) => {
+  const accessTokenObj = localStorage.getItem('token');
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessTokenObj}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/users/email/${email}`, payload);
+};
+
 const user = {
   registerAccount,
   loginAccount,
+  revalidateToken,
 };
 
 export default user;
