@@ -1,4 +1,10 @@
-import { REGISTER_USER, SET_LOADING, GET_USER_DATA } from './constants';
+import {
+  REGISTER_USER,
+  SET_LOADING,
+  GET_USER_DATA,
+  LOGIN_USER,
+  LOGOUT_USER,
+} from './constants';
 
 const initialState = {
   user: null,
@@ -7,6 +13,17 @@ const initialState = {
 function reducer(state = initialState, action = '') {
   const newValue = action.payload;
   switch (action.type) {
+    case LOGIN_USER:
+      return {
+        ...state,
+        user: newValue,
+      };
+    case LOGOUT_USER: {
+      return {
+        ...state,
+        user: newValue,
+      };
+    }
     case REGISTER_USER: {
       return {
         ...state,
