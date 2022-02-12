@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { patchUserData } from '../../store/actions';
 import useForm from '../../hooks/useForm';

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import PersonIcon from '@mui/icons-material/Person';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { HeaderContainer, Logo } from './styled';
 import { getUserFromLocalStorage } from '../../store/actions';
 import NavItem from '../NavItem/NavItem';
@@ -14,6 +15,7 @@ import LoginButton from '../LoginButton/LoginButton';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user);
 
   const [open, setOpen] = useState(false);
@@ -33,7 +35,7 @@ const Header = () => {
 
   return (
     <HeaderContainer>
-      <Logo>interguide</Logo>
+      <Logo onClick={() => navigate('/')}>interguide</Logo>
       <SearchBar />
       {user ? (
         <NavItem handleClick={() => setOpen(!open)} icon={<PersonIcon />}>

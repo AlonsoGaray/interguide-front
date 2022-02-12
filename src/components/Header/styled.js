@@ -20,6 +20,10 @@ const Logo = styled.h1`
   margin-left: 10px;
   color: #33353d;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (min-width: 769px) {
     margin-left: 20px;
   }

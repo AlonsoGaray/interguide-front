@@ -11,6 +11,13 @@ const Dropdown = styled.div`
   padding: 0.2rem;
   overflow: hidden;
 
+  img {
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+
   .icon-button {
     display: flex;
     align-items: center;
@@ -32,10 +39,5 @@ const Dropdown = styled.div`
   }
 `;
 
-const ProfileImg = styled.img`
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-`;
-
-export { Dropdown, ProfileImg };
+// eslint-disable-next-line import/prefer-default-export
+export { Dropdown };

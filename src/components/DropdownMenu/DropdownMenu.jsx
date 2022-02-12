@@ -3,9 +3,13 @@
 import React from 'react';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { Dropdown, ProfileImg } from './styled';
+import { AdvancedImage } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { useSelector, useDispatch } from 'react-redux';
+import { Dropdown } from './styled';
 import { logout } from '../../store/actions';
+
+const CLOUD = process.env.REACT_APP_CLOUD_NAME;
 
 const DropdownItem = ({ children, leftIcon, handleClick, redirect }) => {
   return (
@@ -18,11 +22,23 @@ const DropdownItem = ({ children, leftIcon, handleClick, redirect }) => {
 };
 
 const DropdownMenu = () => {
+  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: CLOUD,
+    },
+  });
+
+  const myImage = cld.image(user?.photo?.public_id || 'Default-Profile-Photo');
 
   return (
     <Dropdown>
-      <DropdownItem redirect="/mi-perfil" leftIcon={<ProfileImg src="" />}>
+      <DropdownItem
+        redirect="/mi-perfil"
+        leftIcon={<AdvancedImage cldImg={myImage} />}
+      >
         <br />
         &nbsp;&nbsp; My Profile
       </DropdownItem>

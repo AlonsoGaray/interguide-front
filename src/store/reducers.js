@@ -4,6 +4,7 @@ import {
   GET_USER_FROM_LOCALSTORAGE,
   LOGIN_USER,
   LOGOUT_USER,
+  UPLOAD_FILE,
 } from './constants';
 
 const initialState = {
@@ -37,6 +38,12 @@ function reducer(state = initialState, action = '') {
       };
     }
     case GET_USER_FROM_LOCALSTORAGE: {
+      return {
+        ...state,
+        user: newValue,
+      };
+    }
+    case UPLOAD_FILE: {
       return {
         ...state,
         user: newValue,

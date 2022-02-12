@@ -8,10 +8,12 @@ import {
   LOGOUT_USER,
   SET_LOADING,
   GET_USER_FROM_LOCALSTORAGE,
+  UPLOAD_FILE,
 } from './constants';
 
 import authService from '../services/auth';
 import userService from '../services/user';
+import uploadService from '../services/upload';
 
 // eslint-disable-next-line import/prefer-default-export
 export const registerUser = async (dispatch, newUser) => {
@@ -98,6 +100,32 @@ export const patchUserData = async (dispatch, form) => {
   } catch (error) {
     // eslint-disable-next-line no-console
     return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const postUploadFile = async (dispatch, file, user) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await uploadService.postFile(file);
+
+    if (response.status === 200) {
+      const userResponse = await userService.patchUser({
+        ...user,
+        photo: response.data,
+      });
+      const userData = await userResponse.json();
+
+      if (userResponse.ok) {
+        localStorage.setItem('token', userData.token);
+        const decoded = jwt_decode(userData.token);
+        dispatch({ type: UPLOAD_FILE, payload: decoded });
+      }
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
   } finally {
     dispatch({ type: SET_LOADING, payload: false });
   }
