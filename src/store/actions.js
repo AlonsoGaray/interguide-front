@@ -11,6 +11,7 @@ import {
 } from './constants';
 
 import authService from '../services/auth';
+import userService from '../services/user';
 
 // eslint-disable-next-line import/prefer-default-export
 export const registerUser = async (dispatch, newUser) => {
@@ -80,4 +81,24 @@ export const getUserFromLocalStorage = async (dispatch) => {
     return dispatch({ type: GET_USER_FROM_LOCALSTORAGE, payload: decoded });
   }
   return dispatch({ type: LOGOUT_USER, payload: null });
+};
+
+export const patchUserData = async (dispatch, form) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await userService.patchUser(form);
+    const data = await response.json();
+
+    if (response.ok) {
+      localStorage.setItem('token', data.token);
+      const decoded = jwt_decode(data.token);
+      dispatch({ type: LOGIN_USER, payload: decoded });
+    }
+    return data;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
 };

@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   SuperContainer,
@@ -10,12 +11,16 @@ import {
 } from './styled';
 
 const PerfilLeft = () => {
+  const user = useSelector((state) => state.user);
+
   return (
     <SuperContainer>
       <DataContainer>
         <ProfileImg src="" />
-        <p>name</p>
-        <p>email</p>
+        <p>
+          {user?.firstName} {user?.lastName}
+        </p>
+        <p>{user?.email}</p>
       </DataContainer>
       <div
         style={{
