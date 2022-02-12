@@ -82,6 +82,14 @@ const Register = () => {
             required
           />
           <input
+            name="country"
+            type="text"
+            placeholder="Country"
+            value={undefined}
+            onChange={handleChange}
+            required
+          />
+          <input
             name="email"
             type="email"
             placeholder="Email"
