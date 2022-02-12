@@ -34,14 +34,14 @@ const LogoContainer = styled.div`
 `;
 
 const InputContainer = styled.div`
-  height: 15rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   input {
     width: 22rem;
     border-radius: 0.2rem;
-    height: 30%;
+    height: 10%;
     padding: 0.5rem 1rem;
     border: 0;
     background: lightgrey;
