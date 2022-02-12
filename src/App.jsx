@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './pages/Layout/Layout';
 import MiPerfil from './pages/MiPerfil/MiPerfil';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
 import Activity from './components/PerfilRight/Activity';
 import Settings from './components/PerfilRight/Settings';
 
@@ -14,6 +16,8 @@ const App = () => {
             <Route path="settings" element={<Settings />} />
           </Route>
         </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );

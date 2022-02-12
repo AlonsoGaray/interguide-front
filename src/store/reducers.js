@@ -1,7 +1,7 @@
 import {
   REGISTER_USER,
   SET_LOADING,
-  GET_USER_DATA,
+  GET_USER_FROM_LOCALSTORAGE,
   LOGIN_USER,
   LOGOUT_USER,
 } from './constants';
@@ -36,7 +36,7 @@ function reducer(state = initialState, action = '') {
         isLoading: newValue,
       };
     }
-    case GET_USER_DATA: {
+    case GET_USER_FROM_LOCALSTORAGE: {
       return {
         ...state,
         user: newValue,
