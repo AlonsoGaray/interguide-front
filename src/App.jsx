@@ -10,18 +10,24 @@ import TopQuestions from './components/TopQuestions/TopQuestions';
 import Tags from './components/Tags/Tags';
 import Questions from './components/Questions/Questions';
 import Companies from './components/Companies/Companies';
+import PostQuestion from './pages/PostQuestion/PostQuestion';
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* Start Post Question */}
+          <Route path="/post-question" element={<PostQuestion />} />
+          {/* Start Post Question */}
+          {/* Start Home */}
           <Route path="" element={<Home />}>
             <Route path="" element={<TopQuestions />} />
             <Route path="questions" element={<Questions />} />
             <Route path="companies" element={<Companies />} />
             <Route path="tags" element={<Tags />} />
           </Route>
+          {/* Start Home */}
           {/* Start Mi Perfil */}
           <Route path="/mi-perfil/" element={<MiPerfil />}>
             <Route path="" element={<Activity />} />

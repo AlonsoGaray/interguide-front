@@ -5,7 +5,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   width: 100vw;
-  min-height: 200px;
+  min-height: 20px;
   margin: 20px 0;
 
   a {
@@ -16,7 +16,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    height: 200px;
+    min-height: 200px;
     width: 20vw;
   }
 `;

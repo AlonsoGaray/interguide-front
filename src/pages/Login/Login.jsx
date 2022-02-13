@@ -17,7 +17,7 @@ const Login = () => {
   const user = useSelector((state) => state.user);
   const { form, handleChange } = useForm({});
   const [formOk, setFormOk] = useState(0);
-  const [formData, setFormData] = useState();
+  const [formData, setFormData] = useState(null);
 
   useEffect(() => {
     const validateForm = () => {
