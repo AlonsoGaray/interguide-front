@@ -14,6 +14,7 @@ const loginAccount = ({ email, password }) => {
 
 const registerAccount = ({
   email,
+  country,
   password,
   firstName,
   lastName,
@@ -27,6 +28,7 @@ const registerAccount = ({
     },
     body: JSON.stringify({
       email,
+      country,
       password,
       firstName,
       lastName,
