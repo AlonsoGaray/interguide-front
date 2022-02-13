@@ -2,11 +2,20 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+
+  @media (min-width: 769px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+`;
+
+const RightContainer = styled.div`
+  display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100vw;
   min-height: 200px;
-  margin: 20px 0;
 
   a {
     text-decoration: none;
@@ -14,11 +23,9 @@ const Container = styled.div`
 
   @media (min-width: 769px) {
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     height: 200px;
-    width: 20vw;
+    width: 80vw;
   }
 `;
-
-export default Container;
+export { Container, RightContainer };
