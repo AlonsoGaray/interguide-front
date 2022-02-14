@@ -5,10 +5,12 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   UPLOAD_FILE,
+  POST_QUESTION,
 } from './constants';
 
 const initialState = {
   user: null,
+  question: {},
 };
 
 function reducer(state = initialState, action = '') {
@@ -47,6 +49,12 @@ function reducer(state = initialState, action = '') {
       return {
         ...state,
         user: newValue,
+      };
+    }
+    case POST_QUESTION: {
+      return {
+        ...state,
+        question: newValue,
       };
     }
     default:
