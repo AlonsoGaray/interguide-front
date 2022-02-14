@@ -4,4 +4,5 @@ export const LOGOUT_USER = 'logout-user';
 export const GET_USER_FROM_LOCALSTORAGE = 'get-user-from-localstorage';
 export const SET_LOADING = 'loading';
 export const UPLOAD_FILE = 'upload-file';
-export const POST_QUESTION = 'upload-file';
+export const POST_QUESTION = 'post-question';
+export const GET_ALL_TAGS = 'get-all-tags';

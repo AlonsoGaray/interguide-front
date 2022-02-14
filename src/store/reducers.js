@@ -6,11 +6,13 @@ import {
   LOGOUT_USER,
   UPLOAD_FILE,
   POST_QUESTION,
+  GET_ALL_TAGS,
 } from './constants';
 
 const initialState = {
   user: null,
   question: {},
+  tagsDB: [],
 };
 
 function reducer(state = initialState, action = '') {
@@ -55,6 +57,12 @@ function reducer(state = initialState, action = '') {
       return {
         ...state,
         question: newValue,
+      };
+    }
+    case GET_ALL_TAGS: {
+      return {
+        ...state,
+        tagsDB: newValue,
       };
     }
     default:

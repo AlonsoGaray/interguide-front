@@ -7,6 +7,7 @@ import {
   SET_LOADING,
   GET_USER_FROM_LOCALSTORAGE,
   UPLOAD_FILE,
+  GET_ALL_TAGS,
   // POST_QUESTION,
 } from './constants';
 
@@ -14,29 +15,13 @@ import authService from '../services/auth';
 import userService from '../services/user';
 import uploadService from '../services/upload';
 import questionService from '../services/question';
+import tagService from '../services/tag';
 
 // eslint-disable-next-line import/prefer-default-export
 export const registerUser = async (dispatch, newUser) => {
   dispatch({ type: SET_LOADING, payload: true });
   try {
     const response = await authService.registerAccount(newUser);
-    const data = await response.json();
-    if (!response.ok) {
-      return data;
-    }
-    return response;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    return console.error(error);
-  } finally {
-    dispatch({ type: SET_LOADING, payload: false });
-  }
-};
-
-export const postQuestion = async (dispatch, newUser) => {
-  dispatch({ type: SET_LOADING, payload: true });
-  try {
-    const response = await questionService.createQuestion(newUser);
     const data = await response.json();
     if (!response.ok) {
       return data;
@@ -143,6 +128,41 @@ export const postUploadFile = async (dispatch, file, user) => {
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const getTagsFromDB = async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await tagService.getAllTags();
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_ALL_TAGS, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const postQuestion = async (dispatch, newUser) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.createQuestion(newUser);
+    const data = await response.json();
+    if (!response.ok) {
+      return data;
+    }
+    return response;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    return console.error(error);
   } finally {
     dispatch({ type: SET_LOADING, payload: false });
   }

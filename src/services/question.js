@@ -1,10 +1,13 @@
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
 const createQuestion = ({ userId, firstName, lastName, question, tag }) => {
+  const accessTokenObj = localStorage.getItem('token');
+
   const payload = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessTokenObj}`,
     },
     body: JSON.stringify({
       userId,
