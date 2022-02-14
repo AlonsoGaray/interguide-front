@@ -1,25 +1,42 @@
-/* eslint-disable no-unused-vars */
 // eslint-disable-next-line camelcase
 import jwt_decode from 'jwt-decode';
 
 import {
-  REGISTER_USER,
   LOGIN_USER,
   LOGOUT_USER,
   SET_LOADING,
   GET_USER_FROM_LOCALSTORAGE,
   UPLOAD_FILE,
+  // POST_QUESTION,
 } from './constants';
 
 import authService from '../services/auth';
 import userService from '../services/user';
 import uploadService from '../services/upload';
+import questionService from '../services/question';
 
 // eslint-disable-next-line import/prefer-default-export
 export const registerUser = async (dispatch, newUser) => {
   dispatch({ type: SET_LOADING, payload: true });
   try {
     const response = await authService.registerAccount(newUser);
+    const data = await response.json();
+    if (!response.ok) {
+      return data;
+    }
+    return response;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const postQuestion = async (dispatch, newUser) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.createQuestion(newUser);
     const data = await response.json();
     if (!response.ok) {
       return data;
