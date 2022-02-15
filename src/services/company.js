@@ -1,6 +1,6 @@
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
-const getAllQuestions = () => {
+const getAllCompanies = () => {
   const payload = {
     method: 'GET',
     headers: {
@@ -8,17 +8,10 @@ const getAllQuestions = () => {
     },
   };
 
-  return fetch(`${URL_BASE}/api/questions`, payload);
+  return fetch(`${URL_BASE}/api/companies`, payload);
 };
 
-const createQuestion = ({
-  userId,
-  firstName,
-  lastName,
-  company,
-  question,
-  tag,
-}) => {
+const createCompany = ({ userId, name }) => {
   const accessTokenObj = localStorage.getItem('token');
 
   const payload = {
@@ -29,19 +22,15 @@ const createQuestion = ({
     },
     body: JSON.stringify({
       userId,
-      firstName,
-      lastName,
-      question,
-      company,
-      tag,
+      name,
     }),
   };
-  return fetch(`${URL_BASE}/api/questions`, payload);
+  return fetch(`${URL_BASE}/api/companies`, payload);
 };
 
-const question = {
-  createQuestion,
-  getAllQuestions,
+const company = {
+  getAllCompanies,
+  createCompany,
 };
 
-export default question;
+export default company;

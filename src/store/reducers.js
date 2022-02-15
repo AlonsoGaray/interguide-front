@@ -5,12 +5,18 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   UPLOAD_FILE,
+  GET_ALL_QUESTIONS,
   POST_QUESTION,
+  GET_ALL_TAGS,
+  POST_COMPANY,
+  GET_ALL_COMPANIES,
 } from './constants';
 
 const initialState = {
   user: null,
-  question: {},
+  question: [],
+  tagsDB: [],
+  companyDB: [],
 };
 
 function reducer(state = initialState, action = '') {
@@ -51,12 +57,33 @@ function reducer(state = initialState, action = '') {
         user: newValue,
       };
     }
+    case GET_ALL_QUESTIONS:
+      return {
+        ...state,
+        question: newValue,
+      };
     case POST_QUESTION: {
       return {
         ...state,
         question: newValue,
       };
     }
+    case GET_ALL_TAGS: {
+      return {
+        ...state,
+        tagsDB: newValue,
+      };
+    }
+    case POST_COMPANY:
+      return {
+        ...state,
+        companyDB: newValue,
+      };
+    case GET_ALL_COMPANIES:
+      return {
+        ...state,
+        companyDB: newValue,
+      };
     default:
       return state;
   }

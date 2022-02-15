@@ -7,36 +7,25 @@ import {
   SET_LOADING,
   GET_USER_FROM_LOCALSTORAGE,
   UPLOAD_FILE,
-  // POST_QUESTION,
+  GET_ALL_TAGS,
+  GET_ALL_QUESTIONS,
+  POST_QUESTION,
+  POST_COMPANY,
+  GET_ALL_COMPANIES,
 } from './constants';
 
 import authService from '../services/auth';
 import userService from '../services/user';
 import uploadService from '../services/upload';
 import questionService from '../services/question';
+import tagService from '../services/tag';
+import companyService from '../services/company';
 
 // eslint-disable-next-line import/prefer-default-export
 export const registerUser = async (dispatch, newUser) => {
   dispatch({ type: SET_LOADING, payload: true });
   try {
     const response = await authService.registerAccount(newUser);
-    const data = await response.json();
-    if (!response.ok) {
-      return data;
-    }
-    return response;
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    return console.error(error);
-  } finally {
-    dispatch({ type: SET_LOADING, payload: false });
-  }
-};
-
-export const postQuestion = async (dispatch, newUser) => {
-  dispatch({ type: SET_LOADING, payload: true });
-  try {
-    const response = await questionService.createQuestion(newUser);
     const data = await response.json();
     if (!response.ok) {
       return data;
@@ -139,6 +128,100 @@ export const postUploadFile = async (dispatch, file, user) => {
         const decoded = jwt_decode(userData.token);
         dispatch({ type: UPLOAD_FILE, payload: decoded });
       }
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const getTagsFromDB = async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await tagService.getAllTags();
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_ALL_TAGS, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const getQuestionsFromDB = async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.getAllQuestions();
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_ALL_QUESTIONS, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const postQuestion = async (dispatch, question) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.createQuestion(question);
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: POST_QUESTION, payload: data });
+      return response;
+    }
+    return response;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const postCompany = async (dispatch, company) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await companyService.createCompany(company);
+
+    const data = await (await companyService.getAllCompanies()).json();
+
+    if (response.ok) {
+      dispatch({ type: POST_COMPANY, payload: data });
+      return response;
+    }
+    return response;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const getCompaniesFromDB = async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await companyService.getAllCompanies();
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_ALL_COMPANIES, payload: data });
     }
   } catch (error) {
     // eslint-disable-next-line no-console
