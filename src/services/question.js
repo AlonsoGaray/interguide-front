@@ -1,5 +1,16 @@
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
+const getAllQuestions = () => {
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  return fetch(`${URL_BASE}/api/questions`, payload);
+};
+
 const createQuestion = ({
   userId,
   firstName,
@@ -30,6 +41,7 @@ const createQuestion = ({
 
 const question = {
   createQuestion,
+  getAllQuestions,
 };
 
 export default question;

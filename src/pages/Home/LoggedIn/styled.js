@@ -24,7 +24,6 @@ const RightContainer = styled.div`
   @media (min-width: 769px) {
     flex-direction: column;
     justify-content: flex-start;
-    height: 200px;
     width: 80vw;
   }
 `;

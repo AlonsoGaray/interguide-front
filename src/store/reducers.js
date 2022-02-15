@@ -5,6 +5,7 @@ import {
   LOGIN_USER,
   LOGOUT_USER,
   UPLOAD_FILE,
+  GET_ALL_QUESTIONS,
   POST_QUESTION,
   GET_ALL_TAGS,
   POST_COMPANY,
@@ -13,7 +14,7 @@ import {
 
 const initialState = {
   user: null,
-  question: {},
+  question: [],
   tagsDB: [],
   companyDB: [],
 };
@@ -56,6 +57,11 @@ function reducer(state = initialState, action = '') {
         user: newValue,
       };
     }
+    case GET_ALL_QUESTIONS:
+      return {
+        ...state,
+        question: newValue,
+      };
     case POST_QUESTION: {
       return {
         ...state,

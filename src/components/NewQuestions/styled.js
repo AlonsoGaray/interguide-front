@@ -2,13 +2,30 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const TopContainer = styled.div`
+  display: flex;
   justify-content: space-between;
   width: 100%;
-  padding: 20px;
+  margin-top: 30px;
 
   button {
     margin-right: 10px;
   }
 `;
 
-export default Container;
+const QuestionsContainer = styled.div`
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 20px;
+  width: 100%;
+  border: 1px solid red;
+`;
+
+// eslint-disable-next-line prettier/prettier
+export {
+ Container, TopContainer, QuestionsContainer
+};

@@ -8,6 +8,7 @@ import {
   GET_USER_FROM_LOCALSTORAGE,
   UPLOAD_FILE,
   GET_ALL_TAGS,
+  GET_ALL_QUESTIONS,
   POST_QUESTION,
   POST_COMPANY,
   GET_ALL_COMPANIES,
@@ -145,6 +146,24 @@ export const getTagsFromDB = async (dispatch) => {
 
     if (response.ok) {
       dispatch({ type: GET_ALL_TAGS, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const getQuestionsFromDB = async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.getAllQuestions();
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_ALL_QUESTIONS, payload: data });
     }
   } catch (error) {
     // eslint-disable-next-line no-console
