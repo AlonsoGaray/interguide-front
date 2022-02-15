@@ -8,7 +8,9 @@ import {
   GET_USER_FROM_LOCALSTORAGE,
   UPLOAD_FILE,
   GET_ALL_TAGS,
-  // POST_QUESTION,
+  POST_QUESTION,
+  POST_COMPANY,
+  GET_ALL_COMPANIES,
 } from './constants';
 
 import authService from '../services/auth';
@@ -16,6 +18,7 @@ import userService from '../services/user';
 import uploadService from '../services/upload';
 import questionService from '../services/question';
 import tagService from '../services/tag';
+import companyService from '../services/company';
 
 // eslint-disable-next-line import/prefer-default-export
 export const registerUser = async (dispatch, newUser) => {
@@ -151,18 +154,59 @@ export const getTagsFromDB = async (dispatch) => {
   }
 };
 
-export const postQuestion = async (dispatch, newUser) => {
+export const postQuestion = async (dispatch, question) => {
   dispatch({ type: SET_LOADING, payload: true });
   try {
-    const response = await questionService.createQuestion(newUser);
+    const response = await questionService.createQuestion(question);
+
     const data = await response.json();
-    if (!response.ok) {
-      return data;
+
+    if (response.ok) {
+      dispatch({ type: POST_QUESTION, payload: data });
+      return response;
     }
     return response;
   } catch (error) {
     // eslint-disable-next-line no-console
     return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const postCompany = async (dispatch, company) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await companyService.createCompany(company);
+
+    const data = await (await companyService.getAllCompanies()).json();
+
+    if (response.ok) {
+      dispatch({ type: POST_COMPANY, payload: data });
+      return response;
+    }
+    return response;
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const getCompaniesFromDB = async (dispatch) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await companyService.getAllCompanies();
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_ALL_COMPANIES, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
   } finally {
     dispatch({ type: SET_LOADING, payload: false });
   }

@@ -6,7 +6,7 @@ import Register from './pages/Register/Register';
 import Activity from './components/PerfilRight/Activity';
 import Settings from './components/PerfilRight/Settings';
 import Home from './pages/Home/Home';
-import TopQuestions from './components/TopQuestions/TopQuestions';
+import NewQuestions from './components/NewQuestions/NewQuestions';
 import Tags from './components/Tags/Tags';
 import Questions from './components/Questions/Questions';
 import Companies from './components/Companies/Companies';
@@ -22,7 +22,7 @@ const App = () => {
           {/* Start Post Question */}
           {/* Start Home */}
           <Route path="" element={<Home />}>
-            <Route path="" element={<TopQuestions />} />
+            <Route path="" element={<NewQuestions />} />
             <Route path="questions" element={<Questions />} />
             <Route path="companies" element={<Companies />} />
             <Route path="tags" element={<Tags />} />

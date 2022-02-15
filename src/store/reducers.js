@@ -7,12 +7,15 @@ import {
   UPLOAD_FILE,
   POST_QUESTION,
   GET_ALL_TAGS,
+  POST_COMPANY,
+  GET_ALL_COMPANIES,
 } from './constants';
 
 const initialState = {
   user: null,
   question: {},
   tagsDB: [],
+  companyDB: [],
 };
 
 function reducer(state = initialState, action = '') {
@@ -65,6 +68,16 @@ function reducer(state = initialState, action = '') {
         tagsDB: newValue,
       };
     }
+    case POST_COMPANY:
+      return {
+        ...state,
+        companyDB: newValue,
+      };
+    case GET_ALL_COMPANIES:
+      return {
+        ...state,
+        companyDB: newValue,
+      };
     default:
       return state;
   }

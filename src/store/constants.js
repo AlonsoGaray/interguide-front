@@ -6,3 +6,5 @@ export const SET_LOADING = 'loading';
 export const UPLOAD_FILE = 'upload-file';
 export const POST_QUESTION = 'post-question';
 export const GET_ALL_TAGS = 'get-all-tags';
+export const POST_COMPANY = 'post-company';
+export const GET_ALL_COMPANIES = 'get-all-companies';

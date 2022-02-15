@@ -1,11 +1,17 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Creatable from 'react-select/creatable';
 import { useNavigate } from 'react-router-dom';
 import { WithContext as ReactTags } from 'react-tag-input';
 import { Container, FormContainer, SubmitButton } from './styled';
 import useForm from '../../hooks/useForm';
-import { postQuestion, getTagsFromDB } from '../../store/actions';
+import {
+  postQuestion,
+  getTagsFromDB,
+  getCompaniesFromDB,
+  postCompany,
+} from '../../store/actions';
 
 const KeyCodes = {
   comma: 188,
@@ -17,6 +23,7 @@ const delimiters = [KeyCodes.comma, KeyCodes.enter];
 const PostQuestion = () => {
   const user = useSelector((state) => state.user);
   const tagsDB = useSelector((state) => state.tagsDB);
+  const companyDB = useSelector((state) => state.companyDB);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,28 +32,38 @@ const PostQuestion = () => {
     firstName: user?.firstName,
     lastName: user?.lastName,
     tag: [],
+    company: undefined,
   };
 
   const { form, handleChange } = useForm(profileForm);
   const [formOk, setFormOk] = useState(0);
 
-  const suggestions = tagsDB.map((tag) => {
+  const tagSuggestions = tagsDB.map((tag) => {
     return {
       id: tag._id,
       name: tag.name,
       _id: tag._id,
     };
   });
+
+  const companies = companyDB.map((company) => {
+    return {
+      value: company.name,
+      label: company.name,
+    };
+  });
+
   const [tagsData, setTagsData] = useState([]);
   const [tagsName, setTagsName] = useState([]);
+  const [selectedCompany, setSelectedCompany] = useState(null);
 
-  const handleDelete = (i) => {
+  const handleDeleteTags = (i) => {
     setTagsData(tagsData.filter((tag, index) => index !== i));
   };
 
-  const handleAddition = (tag) => {
-    if (tagsName.includes(tag.name)) {
-      setTagsData([...tagsData, tag]);
+  const handleAddition = (value) => {
+    if (tagsName.includes(value.name)) {
+      setTagsData([...tagsData, value]);
     }
   };
 
@@ -57,19 +74,29 @@ const PostQuestion = () => {
       form.tag.push(item);
     });
 
+    form.company = selectedCompany.label;
+
+    if (selectedCompany.__isNew__) {
+      await postCompany(dispatch, {
+        name: selectedCompany?.label,
+        userId: user?.id,
+      });
+    }
+
     const response = await postQuestion(dispatch, form);
 
-    setTagsData([]);
-
     if (response.ok) {
+      setTagsData([]);
+      setSelectedCompany(null);
       setTimeout(() => {
         navigate('/');
-      }, 200);
+      }, 1000);
     }
 
     if (response.error) {
       setTimeout(() => {
         setTagsData([]);
+        setSelectedCompany(null);
       }, 2500);
     }
   };
@@ -94,6 +121,10 @@ const PostQuestion = () => {
       await getTagsFromDB(dispatch);
     };
     getTags();
+    const getCompanies = async () => {
+      await getCompaniesFromDB(dispatch);
+    };
+    getCompanies();
   }, []);
 
   return (
@@ -102,6 +133,14 @@ const PostQuestion = () => {
         <Container>
           <p>Post The Question</p>
           <FormContainer onSubmit={handleSubmit}>
+            <Creatable
+              name="company"
+              defaultValue={selectedCompany}
+              onChange={setSelectedCompany}
+              options={companies}
+              placeholder="Select a company"
+            />
+
             <p>Question</p>
             <input
               name="question"
@@ -115,22 +154,9 @@ const PostQuestion = () => {
             <ReactTags
               labelField="name"
               tags={tagsData}
-              suggestions={suggestions}
+              suggestions={tagSuggestions}
               delimiters={delimiters}
-              handleDelete={handleDelete}
-              handleAddition={handleAddition}
-              inputFieldPosition="top"
-              autofocus={false}
-              autocomplete
-            />
-
-            <p>Companies</p>
-            <ReactTags
-              labelField="name"
-              tags={tagsData}
-              suggestions={suggestions}
-              delimiters={delimiters}
-              handleDelete={handleDelete}
+              handleDelete={handleDeleteTags}
               handleAddition={handleAddition}
               inputFieldPosition="top"
               autofocus={false}

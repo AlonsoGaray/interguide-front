@@ -1,6 +1,13 @@
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
-const createQuestion = ({ userId, firstName, lastName, question, tag }) => {
+const createQuestion = ({
+  userId,
+  firstName,
+  lastName,
+  company,
+  question,
+  tag,
+}) => {
   const accessTokenObj = localStorage.getItem('token');
 
   const payload = {
@@ -14,6 +21,7 @@ const createQuestion = ({ userId, firstName, lastName, question, tag }) => {
       firstName,
       lastName,
       question,
+      company,
       tag,
     }),
   };
