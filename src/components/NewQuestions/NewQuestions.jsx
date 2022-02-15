@@ -1,7 +1,8 @@
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import socket from '../../utils/socket';
 import { Container, TopContainer, QuestionsContainer } from './styled';
 import { getQuestionsFromDB } from '../../store/actions';
 import Loader from '../Loader';
@@ -10,11 +11,12 @@ const NewQuestions = () => {
   const questions = useSelector((state) => state.question);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [questionsSocket, setQuestionsSocket] = useState([]);
 
   useEffect(() => {
     const getQuestions = async () => {
       try {
-        if (questions.length < 1) {
+        if (questions.length < 1 || questions.length === undefined) {
           getQuestionsFromDB(dispatch);
         }
       } catch (error) {
@@ -22,7 +24,18 @@ const NewQuestions = () => {
       }
     };
     getQuestions();
-  }, []);
+    setQuestionsSocket(questions);
+  }, [questions]);
+
+  useEffect(() => {
+    socket.on('question:create', (data) => {
+      setQuestionsSocket([...questionsSocket, data]);
+    });
+
+    return () => {
+      socket.off('question:create');
+    };
+  }, [questionsSocket, questions]);
 
   return (
     <Container>
@@ -33,8 +46,8 @@ const NewQuestions = () => {
         </button>
       </TopContainer>
       <QuestionsContainer>
-        {questions.length > 0 ? (
-          questions.map((q) => <p key={q._id}>{q.question}</p>)
+        {questionsSocket.length > 0 ? (
+          questionsSocket.map((q) => <p key={q._id}>{q.question}</p>)
         ) : (
           <Loader />
         )}
