@@ -17,6 +17,7 @@ const Container = styled.div`
     align-items: center;
     justify-content: space-around;
     min-height: 200px;
+    max-height: 200px;
     width: 20vw;
   }
 `;

@@ -5,6 +5,7 @@ export const GET_USER_FROM_LOCALSTORAGE = 'get-user-from-localstorage';
 export const SET_LOADING = 'loading';
 export const UPLOAD_FILE = 'upload-file';
 export const GET_ALL_QUESTIONS = 'get-all-questions';
+export const GET_QUESTION_BY_ID = 'get-question-by-id';
 export const POST_QUESTION = 'post-question';
 export const GET_ALL_TAGS = 'get-all-tags';
 export const POST_COMPANY = 'post-company';

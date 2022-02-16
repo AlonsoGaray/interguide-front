@@ -12,6 +12,7 @@ import {
   POST_QUESTION,
   POST_COMPANY,
   GET_ALL_COMPANIES,
+  GET_QUESTION_BY_ID,
 } from './constants';
 
 import authService from '../services/auth';
@@ -146,6 +147,24 @@ export const getTagsFromDB = async (dispatch) => {
 
     if (response.ok) {
       dispatch({ type: GET_ALL_TAGS, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const getQuestionById = async (dispatch, questionId) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.getQuestionById(questionId);
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_QUESTION_BY_ID, payload: data });
     }
   } catch (error) {
     // eslint-disable-next-line no-console

@@ -10,6 +10,7 @@ import {
   GET_ALL_TAGS,
   POST_COMPANY,
   GET_ALL_COMPANIES,
+  GET_QUESTION_BY_ID,
 } from './constants';
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   question: [],
   tagsDB: [],
   companyDB: [],
+  questionById: [],
 };
 
 function reducer(state = initialState, action = '') {
@@ -55,6 +57,12 @@ function reducer(state = initialState, action = '') {
       return {
         ...state,
         user: newValue,
+      };
+    }
+    case GET_QUESTION_BY_ID: {
+      return {
+        ...state,
+        questionById: newValue,
       };
     }
     case GET_ALL_QUESTIONS:
