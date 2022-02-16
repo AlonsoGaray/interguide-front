@@ -22,13 +22,7 @@ const NewQuestions = () => {
 
   useEffect(() => {
     const getQuestions = async () => {
-      try {
-        if (questions.length < 1 || questions.length === undefined) {
-          getQuestionsFromDB(dispatch);
-        }
-      } catch (error) {
-        throw new Error(error);
-      }
+      await getQuestionsFromDB(dispatch);
     };
     getQuestions();
     setQuestionsSocket(questions);
