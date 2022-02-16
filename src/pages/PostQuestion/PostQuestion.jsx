@@ -6,13 +6,13 @@ import Creatable from 'react-select/creatable';
 import makeAnimated from 'react-select/animated';
 import { useNavigate } from 'react-router-dom';
 import { Editor } from '@tinymce/tinymce-react';
+import useForm from '../../hooks/useForm';
 import {
   Container,
   FormContainer,
   SubmitButton,
   EditorContainer,
 } from './styled';
-import useForm from '../../hooks/useForm';
 import {
   postQuestion,
   getTagsFromDB,
@@ -138,6 +138,7 @@ const PostQuestion = () => {
         <Container>
           <p>Post The Question</p>
           <FormContainer onSubmit={handleSubmit}>
+            <p>Company</p>
             <Creatable
               name="company"
               defaultValue={selectedCompany}
@@ -149,6 +150,7 @@ const PostQuestion = () => {
 
             <p>Question</p>
             <input
+              className="input-question"
               name="question"
               id="question"
               type="text"
@@ -163,6 +165,7 @@ const PostQuestion = () => {
               onChange={setSelectedTags}
               options={tags}
               maxMenuHeight={250}
+              placeholder="Select tags"
               isMulti
             />
 
