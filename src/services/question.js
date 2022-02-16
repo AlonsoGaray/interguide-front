@@ -39,9 +39,23 @@ const createQuestion = ({
   return fetch(`${URL_BASE}/api/questions`, payload);
 };
 
+const getQuestionById = (questionId) => {
+  const accessTokenObj = localStorage.getItem('token');
+
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessTokenObj}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/questions/${questionId}`, payload);
+};
+
 const question = {
   createQuestion,
   getAllQuestions,
+  getQuestionById,
 };
 
 export default question;

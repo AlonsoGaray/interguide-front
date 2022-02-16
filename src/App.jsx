@@ -11,6 +11,7 @@ import Tags from './components/Tags/Tags';
 import Questions from './components/Questions/Questions';
 import Companies from './components/Companies/Companies';
 import PostQuestion from './pages/PostQuestion/PostQuestion';
+import QuestionDetail from './components/QuestionDetail/QuestionDetail';
 
 const App = () => {
   return (
@@ -19,13 +20,18 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           {/* Start Post Question */}
           <Route path="/post-question" element={<PostQuestion />} />
-          {/* Start Post Question */}
+          {/* End Post Question */}
           {/* Start Home */}
           <Route path="" element={<Home />}>
             <Route path="" element={<NewQuestions />} />
             <Route path="questions" element={<Questions />} />
             <Route path="companies" element={<Companies />} />
             <Route path="tags" element={<Tags />} />
+            {/* Start Question */}
+            <Route path="question">
+              <Route path=":id" element={<QuestionDetail />} />
+            </Route>
+            {/* Start Question */}
           </Route>
           {/* Start Home */}
           {/* Start Mi Perfil */}

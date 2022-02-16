@@ -14,8 +14,8 @@ const RightContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 100vw;
   min-height: 200px;
+  border-left: 1px solid #737373;
 
   a {
     text-decoration: none;
@@ -24,7 +24,7 @@ const RightContainer = styled.div`
   @media (min-width: 769px) {
     flex-direction: column;
     justify-content: flex-start;
-    width: 80vw;
+    width: 100%;
   }
 `;
 export { Container, RightContainer };
