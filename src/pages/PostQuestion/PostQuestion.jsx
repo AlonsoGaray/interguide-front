@@ -212,7 +212,7 @@ const PostQuestion = () => {
           </FormContainer>
         </Container>
       ) : (
-        <p>Logeate</p>
+        <p>Log In to see this page</p>
       )}
     </div>
   );

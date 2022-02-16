@@ -61,7 +61,7 @@ const Register = () => {
     <>
       <Form onSubmit={handleSubmit}>
         <LogoContainer>
-          <p>El mejor servicio, al mejor precio</p>
+          <p>The place to share your interviews and help others</p>
         </LogoContainer>
 
         <InputContainer>
