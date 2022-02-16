@@ -4,21 +4,29 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  outline: 1px solid #737373;
 
   .title {
     margin-left: 10px;
+  }
+
+  @media (min-width: 768px) {
+    outline: 0;
   }
 `;
 
 const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 10px;
   padding-bottom: 10px;
   border-bottom: 1px solid #737373;
 
   button {
     margin-right: 10px;
+  }
+  @media (min-width: 768px) {
+    margin-top: 20px;
   }
 `;
 
@@ -58,8 +66,9 @@ const RightSingleContainer = styled.div`
 const LeftSingleContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   width: 100%;
-  padding: 5px 0;
+  padding: 10px;
 
   a {
     font-size: 20px;
@@ -76,6 +85,10 @@ const LeftSingleContainer = styled.div`
     &:hover {
       color: lightblue;
     }
+  }
+
+  .tags {
+    display: flex;
   }
 
   .tag {
