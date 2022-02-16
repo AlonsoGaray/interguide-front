@@ -17,6 +17,7 @@ const createQuestion = ({
   lastName,
   company,
   question,
+  answers,
   tag,
 }) => {
   const accessTokenObj = localStorage.getItem('token');
@@ -33,6 +34,7 @@ const createQuestion = ({
       lastName,
       question,
       company,
+      answers,
       tag,
     }),
   };

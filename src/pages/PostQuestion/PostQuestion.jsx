@@ -4,7 +4,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Creatable from 'react-select/creatable';
 import { useNavigate } from 'react-router-dom';
 import { WithContext as ReactTags } from 'react-tag-input';
-import { Container, FormContainer, SubmitButton } from './styled';
+import { Editor } from '@tinymce/tinymce-react';
+import {
+  Container,
+  FormContainer,
+  SubmitButton,
+  EditorContainer,
+} from './styled';
 import useForm from '../../hooks/useForm';
 import {
   postQuestion,
@@ -17,7 +23,6 @@ const KeyCodes = {
   comma: 188,
   enter: 13,
 };
-
 const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 const PostQuestion = () => {
@@ -33,6 +38,7 @@ const PostQuestion = () => {
     lastName: user?.lastName,
     tag: [],
     company: undefined,
+    answers: [],
   };
 
   const { form, handleChange } = useForm(profileForm);
@@ -56,6 +62,7 @@ const PostQuestion = () => {
   const [tagsData, setTagsData] = useState([]);
   const [tagsName, setTagsName] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const [answer, setAnswer] = useState(null);
 
   const handleDeleteTags = (i) => {
     setTagsData(tagsData.filter((tag, index) => index !== i));
@@ -72,6 +79,11 @@ const PostQuestion = () => {
 
     tagsData.forEach((item) => {
       form.tag.push(item);
+    });
+
+    form.answers.push({
+      userId: user.id,
+      description: answer,
     });
 
     form.company = selectedCompany.label;
@@ -151,6 +163,7 @@ const PostQuestion = () => {
             />
 
             <p>Tags</p>
+
             <ReactTags
               labelField="name"
               tags={tagsData}
@@ -162,6 +175,35 @@ const PostQuestion = () => {
               autofocus={false}
               autocomplete
             />
+
+            <p>Answer</p>
+            <EditorContainer>
+              <Editor
+                apiKey={process.env.REACT_APP_TINY_MCE}
+                init={{
+                  placeholder: 'Type Your Answer Here',
+                  height: 300,
+                  menubar: false,
+                  plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount',
+                    'codesample',
+                  ],
+                  toolbar:
+                    'undo redo | formatselect | ' +
+                    'bold italic backcolor | alignleft aligncenter ' +
+                    'alignright alignjustify | bullist numlist outdent indent | ' +
+                    'removeformat | help ' +
+                    'codesample',
+                  content_style:
+                    'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+                }}
+                onEditorChange={(content) => {
+                  setAnswer(content);
+                }}
+              />
+            </EditorContainer>
 
             <SubmitButton type="submit" disabled={!formOk}>
               Submit

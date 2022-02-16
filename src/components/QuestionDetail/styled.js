@@ -4,10 +4,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-top: -45px;
+  padding: 10px 0;
+  outline: 1px solid #737373;
 
   @media (min-width: 768px) {
     margin: 0;
+    outline: 0;
   }
 `;
 
@@ -68,8 +70,10 @@ const TopRightContainer = styled.div`
 
 const BottomContainer = styled.div`
   display: flex;
-  outline: 1px solid green;
+  flex-direction: column;
   padding-left: 20px;
+  margin-top: 5px;
+  border-bottom: 1px solid #737373;
 `;
 
 // eslint-disable-next-line prettier/prettier

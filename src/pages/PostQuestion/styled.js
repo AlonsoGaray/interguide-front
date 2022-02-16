@@ -5,7 +5,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 500px;
+  min-height: 500px;
   border: 1px solid green;
 
   p {
@@ -21,7 +21,7 @@ const FormContainer = styled.form`
   border: 1px solid red;
 
   p {
-    margin: 15px;
+    margin-top: 30px;
   }
 
   input {
@@ -96,7 +96,26 @@ const SubmitButton = styled.button`
   height: 40px;
 `;
 
+const EditorContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 5px auto;
+  width: 90%;
+  min-height: 200px;
+
+  .DraftEditor-root {
+    padding: 8px;
+  }
+
+  .public-DraftStyleDefault-block {
+    min-height: 200px;
+  }
+`;
+
 // eslint-disable-next-line prettier/prettier
 export {
-Container, FormContainer,SubmitButton
+  Container,
+  FormContainer,
+  SubmitButton,
+  EditorContainer,
 };

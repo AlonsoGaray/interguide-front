@@ -60,14 +60,16 @@ const NewQuestions = () => {
                 <span>
                   <Link to={`/question/${q._id}`}>{q.question}</Link>
                 </span>
-                {q.tag.map((tag) => (
-                  <p className="tag" key={tag._id}>
-                    {tag.name}
-                  </p>
-                ))}
+                <div className="tags">
+                  {q.tag.map((tag) => (
+                    <p className="tag" key={tag._id}>
+                      {tag.name}
+                    </p>
+                  ))}
+                </div>
               </LeftSingleContainer>
               <RightSingleContainer>
-                <p>Answers: {q.answer}</p>
+                <p>Answers: {q.answers.length}</p>
                 <p>Votes: {q.vote}</p>
                 <p>Company: {q.company}</p>
               </RightSingleContainer>
