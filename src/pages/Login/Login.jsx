@@ -57,7 +57,7 @@ const Login = () => {
     <>
       <Form onSubmit={handleSubmit}>
         <LogoContainer>
-          <p>El mejor servicio, al mejor precio</p>
+          <p>The place to share your interviews and help others</p>
         </LogoContainer>
 
         <InputContainer>
@@ -65,7 +65,7 @@ const Login = () => {
             data-cy="login-input_email"
             name="email"
             type="email"
-            placeholder="correo"
+            placeholder="email"
             value={undefined}
             onChange={handleChange}
             required
@@ -75,14 +75,14 @@ const Login = () => {
             name="password"
             type="password"
             value={undefined}
-            placeholder="contraseña"
+            placeholder="password"
             onChange={handleChange}
             required
           />
         </InputContainer>
 
         <Button data-cy="login-btn_login" type="submit" disabled={!formOk}>
-          Ingresa
+          Log In
         </Button>
 
         {/* <p className="form_login__text">o Ingresa con:</p>
@@ -104,8 +104,8 @@ const Login = () => {
         </div> */}
 
         <RegisterContainer>
-          <p>¿Aún no tienes una cuenta?</p>
-          <Link to="/register">Regístrate</Link>
+          <p>Don&apos;t have an account?</p>
+          <Link to="/register">Sign up</Link>
         </RegisterContainer>
       </Form>
       {formData ? <p>{formData.message}</p> : null}
