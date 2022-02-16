@@ -24,68 +24,25 @@ const FormContainer = styled.form`
     margin-top: 30px;
   }
 
-  input {
+  .input-question {
     width: 90%;
-    height: 30px;
+    height: 35px;
     margin: 0 auto;
-    padding: 0;
+    box-sizing: border-box;
+    padding-left: 8px;
+    font-size: 16px;
+    color: rgb(51, 51, 51);
+    font-family: serif;
+    font-weight: 400;
   }
 
-  .ReactTags__tags {
-    position: relative;
+  .css-26l3qy-menu {
+    z-index: 9999;
+  }
+
+  .css-b62m3t-container {
     width: 90%;
-    margin: 0 auto;
-  }
-
-  /* Styles for the input */
-  .ReactTags__tagInput input.ReactTags__tagInputField,
-  .ReactTags__tagInput input.ReactTags__tagInputField:focus {
-    width: 100%;
-  }
-
-  /* Styles for selected tags */
-  .ReactTags__selected span.ReactTags__tag {
-    background: #63bcfd;
-    color: white;
-    font-size: 12px;
-    display: inline-block;
-    padding: 5px;
-    margin: 2px 5px;
-    border-radius: 2px;
-  }
-
-  /* Styles for suggestions */
-  .ReactTags__suggestions {
-    position: absolute;
-    width: 100%;
-  }
-  .ReactTags__suggestions ul {
-    list-style: none;
-    box-shadow: 0.05em 0.01em 0.5em rgba(0, 0, 0, 0.2);
-    background: white;
-    margin: 0;
-    padding: 0;
-  }
-  .ReactTags__suggestions li {
-    border-bottom: 1px solid #ddd;
-    padding: 5px 10px;
-    margin: 0;
-  }
-  .ReactTags__suggestions li mark {
-    text-decoration: underline;
-    background: none;
-    font-weight: 600;
-  }
-  .ReactTags__suggestions ul li.ReactTags__activeSuggestion {
-    background: #b7cfe0;
-    cursor: pointer;
-  }
-
-  .ReactTags__remove {
-    border: none;
-    cursor: pointer;
-    background: none;
-    color: white;
+    margin: auto;
   }
 `;
 

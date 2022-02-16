@@ -1,17 +1,18 @@
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Select from 'react-select';
 import Creatable from 'react-select/creatable';
+import makeAnimated from 'react-select/animated';
 import { useNavigate } from 'react-router-dom';
-import { WithContext as ReactTags } from 'react-tag-input';
 import { Editor } from '@tinymce/tinymce-react';
+import useForm from '../../hooks/useForm';
 import {
   Container,
   FormContainer,
   SubmitButton,
   EditorContainer,
 } from './styled';
-import useForm from '../../hooks/useForm';
 import {
   postQuestion,
   getTagsFromDB,
@@ -19,11 +20,7 @@ import {
   postCompany,
 } from '../../store/actions';
 
-const KeyCodes = {
-  comma: 188,
-  enter: 13,
-};
-const delimiters = [KeyCodes.comma, KeyCodes.enter];
+const animatedComponents = makeAnimated();
 
 const PostQuestion = () => {
   const user = useSelector((state) => state.user);
@@ -44,11 +41,11 @@ const PostQuestion = () => {
   const { form, handleChange } = useForm(profileForm);
   const [formOk, setFormOk] = useState(0);
 
-  const tagSuggestions = tagsDB.map((tag) => {
+  const tags = tagsDB.map((tag) => {
     return {
+      value: tag.name,
+      label: tag.name,
       id: tag._id,
-      name: tag.name,
-      _id: tag._id,
     };
   });
 
@@ -59,32 +56,28 @@ const PostQuestion = () => {
     };
   });
 
-  const [tagsData, setTagsData] = useState([]);
-  const [tagsName, setTagsName] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const [selectedTags, setSelectedTags] = useState(null);
   const [answer, setAnswer] = useState(null);
-
-  const handleDeleteTags = (i) => {
-    setTagsData(tagsData.filter((tag, index) => index !== i));
-  };
-
-  const handleAddition = (value) => {
-    if (tagsName.includes(value.name)) {
-      setTagsData([...tagsData, value]);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    tagsData.forEach((item) => {
-      form.tag.push(item);
-    });
+    if (selectedTags !== null) {
+      selectedTags.forEach((item) => {
+        form.tag.push({
+          _id: item.id,
+          name: item.label,
+        });
+      });
+    }
 
-    form.answers.push({
-      userId: user.id,
-      description: answer,
-    });
+    if (answer !== null) {
+      form.answers.push({
+        userId: user.id,
+        description: answer,
+      });
+    }
 
     form.company = selectedCompany.label;
 
@@ -98,7 +91,7 @@ const PostQuestion = () => {
     const response = await postQuestion(dispatch, form);
 
     if (response.ok) {
-      setTagsData([]);
+      setSelectedTags(null);
       setSelectedCompany(null);
       setTimeout(() => {
         navigate('/');
@@ -107,16 +100,16 @@ const PostQuestion = () => {
 
     if (response.error) {
       setTimeout(() => {
-        setTagsData([]);
+        setSelectedTags(null);
         setSelectedCompany(null);
       }, 2500);
     }
   };
 
-  useEffect(() => {
-    const nameTags = tagsDB.map((tag) => tag.name);
-    setTagsName(nameTags);
-  }, [tagsDB]);
+  // useEffect(() => {
+  //   const nameTags = tagsDB.map((tag) => tag.name);
+  //   setTagsName(nameTags);
+  // }, [tagsDB]);
 
   useEffect(() => {
     const validateForm = () => {
@@ -145,16 +138,19 @@ const PostQuestion = () => {
         <Container>
           <p>Post The Question</p>
           <FormContainer onSubmit={handleSubmit}>
+            <p>Company</p>
             <Creatable
               name="company"
               defaultValue={selectedCompany}
               onChange={setSelectedCompany}
               options={companies}
+              maxMenuHeight={250}
               placeholder="Select a company"
             />
 
             <p>Question</p>
             <input
+              className="input-question"
               name="question"
               id="question"
               type="text"
@@ -163,17 +159,14 @@ const PostQuestion = () => {
             />
 
             <p>Tags</p>
-
-            <ReactTags
-              labelField="name"
-              tags={tagsData}
-              suggestions={tagSuggestions}
-              delimiters={delimiters}
-              handleDelete={handleDeleteTags}
-              handleAddition={handleAddition}
-              inputFieldPosition="top"
-              autofocus={false}
-              autocomplete
+            <Select
+              name="tagsSelect"
+              components={animatedComponents}
+              onChange={setSelectedTags}
+              options={tags}
+              maxMenuHeight={250}
+              placeholder="Select tags"
+              isMulti
             />
 
             <p>Answer</p>
@@ -212,7 +205,7 @@ const PostQuestion = () => {
           </FormContainer>
         </Container>
       ) : (
-        <p>Logeate</p>
+        <p>Log In to see this page</p>
       )}
     </div>
   );
