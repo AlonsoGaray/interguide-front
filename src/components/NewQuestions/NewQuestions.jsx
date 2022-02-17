@@ -1,6 +1,9 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { AdvancedImage } from '@cloudinary/react';
+import { Cloudinary } from '@cloudinary/url-gen';
 import { useSelector, useDispatch } from 'react-redux';
 import socket from '../../utils/socket';
 import {
@@ -10,15 +13,29 @@ import {
   SingleContainer,
   RightSingleContainer,
   LeftSingleContainer,
+  MidSingleContainer,
 } from './styled';
-import { getQuestionsFromDB } from '../../store/actions';
+import { getUsersById, getQuestionsFromDB } from '../../store/actions';
 import Loader from '../Loader';
 
+const CLOUD = process.env.REACT_APP_CLOUD_NAME;
+
 const NewQuestions = () => {
+  const usersById = useSelector((state) => state.usersById);
   const questions = useSelector((state) => state.question);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [questionsSocket, setQuestionsSocket] = useState([]);
+
+  const cld = new Cloudinary({
+    cloud: {
+      cloudName: CLOUD,
+    },
+  });
+
+  function unique(val, i, self) {
+    return self.indexOf(val) === i;
+  }
 
   useEffect(() => {
     const getQuestions = async () => {
@@ -29,6 +46,8 @@ const NewQuestions = () => {
 
   useEffect(() => {
     setQuestionsSocket(questions);
+    const idMap = questions?.map((answer) => answer.userId).filter(unique);
+    idMap?.forEach((a) => getUsersById(dispatch, a));
   }, [questions]);
 
   useEffect(() => {
@@ -41,6 +60,17 @@ const NewQuestions = () => {
     };
   }, [questionsSocket, questions]);
 
+  // useEffect(() => {
+  //   if (
+  //     questions.length !== 0 ||
+  //     questions.length !== undefined ||
+  //     questions.length !== null
+  //   ) {
+  //     const idMap = questions?.map((answer) => answer.userId).filter(unique);
+  //     idMap?.forEach((a) => getUsersById(dispatch, a));
+  //   }
+  // }, [questions]);
+
   return (
     <Container>
       <TopContainer>
@@ -51,27 +81,39 @@ const NewQuestions = () => {
       </TopContainer>
       <QuestionsContainer>
         {questionsSocket.length > 0 ? (
-          questionsSocket.map((q) => (
-            <SingleContainer key={q._id}>
-              <LeftSingleContainer>
-                <span>
-                  <Link to={`/question/${q._id}`}>{q.question}</Link>
-                </span>
-                <div className="tags">
-                  {q.tag.map((tag) => (
-                    <p className="tag" key={tag._id}>
-                      {tag.name}
-                    </p>
-                  ))}
-                </div>
-              </LeftSingleContainer>
-              <RightSingleContainer>
-                <p>Answers: {q.answers.length}</p>
-                <p>Votes: {q.vote}</p>
-                <p>Company: {q.company}</p>
-              </RightSingleContainer>
-            </SingleContainer>
-          ))
+          questionsSocket?.map((q) => {
+            const filtered = usersById?.filter((data) => data.id === q.userId);
+            const photo = cld.image(
+              filtered[0]?.photo?.public_id || 'Default-Profile-Photo',
+            );
+            return (
+              <SingleContainer key={q._id}>
+                <LeftSingleContainer>
+                  <span>
+                    <Link to={`/question/${q._id}`}>{q.question}</Link>
+                  </span>
+                  <div className="tags">
+                    {q.tag.map((tag) => (
+                      <p className="tag" key={tag._id}>
+                        {tag.name}
+                      </p>
+                    ))}
+                  </div>
+                </LeftSingleContainer>
+
+                <MidSingleContainer>
+                  <p>{filtered[0]?.email}</p>
+                  <AdvancedImage cldImg={photo} />
+                </MidSingleContainer>
+
+                <RightSingleContainer>
+                  <p>Answers: {q.answers.length}</p>
+                  <p>Votes: {q.vote}</p>
+                  <p>Company: {q.company}</p>
+                </RightSingleContainer>
+              </SingleContainer>
+            );
+          })
         ) : (
           <Loader />
         )}

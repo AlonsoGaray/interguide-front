@@ -78,11 +78,13 @@ const AnswersContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  div {
-    border-bottom: 1px solid #737373;
-  }
   .answer {
-    padding-left: 20px;
+    padding: 0 30px;
+    border-bottom: 1px solid #737373;
+
+    p {
+      margin: 10px 0;
+    }
   }
 `;
 
@@ -98,6 +100,24 @@ const NewAnswerContainer = styled.div`
   }
 `;
 
+const InfoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+
+  p {
+    font-size: 13px;
+    margin-left: 10px;
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+`;
+
 // eslint-disable-next-line prettier/prettier
 export {
   Container,
@@ -107,4 +127,5 @@ export {
   TopContainer,
   AnswersContainer,
   NewAnswerContainer,
+  InfoContainer,
 };

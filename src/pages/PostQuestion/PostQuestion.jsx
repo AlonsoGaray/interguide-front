@@ -94,7 +94,8 @@ const PostQuestion = () => {
       setSelectedTags(null);
       setSelectedCompany(null);
       setTimeout(() => {
-        navigate('/');
+        navigate(-1);
+        // navigate('/')
       }, 1000);
     }
 
@@ -108,7 +109,12 @@ const PostQuestion = () => {
 
   useEffect(() => {
     const validateForm = () => {
-      if (Object.keys(form)?.length >= 1 && form?.question?.length > 2) {
+      if (
+        Object.keys(form)?.length >= 1 &&
+        form?.question?.length > 5 &&
+        answer !== null &&
+        selectedCompany !== null
+      ) {
         return setFormOk(true);
       }
       return setFormOk(false);

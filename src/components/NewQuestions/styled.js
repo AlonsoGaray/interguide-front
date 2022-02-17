@@ -45,6 +45,11 @@ const SingleContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 const RightSingleContainer = styled.div`
@@ -102,6 +107,10 @@ const LeftSingleContainer = styled.div`
   }
 `;
 
+const MidSingleContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
 // eslint-disable-next-line prettier/prettier
 export {
   Container,
@@ -110,4 +119,5 @@ export {
   SingleContainer,
   RightSingleContainer,
   LeftSingleContainer,
+  MidSingleContainer,
 };

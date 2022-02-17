@@ -16,8 +16,22 @@ const patchUser = (user) => {
   return fetch(`${URL_BASE}/api/users/${userId}`, payload);
 };
 
+const getUsersById = (userId) => {
+  const accessTokenObj = localStorage.getItem('token');
+
+  const payload = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessTokenObj}`,
+    },
+  };
+  return fetch(`${URL_BASE}/api/users/${userId}`, payload);
+};
+
 const user = {
   patchUser,
+  getUsersById,
 };
 
 export default user;
