@@ -25,6 +25,9 @@ const NewQuestions = () => {
       await getQuestionsFromDB(dispatch);
     };
     getQuestions();
+  }, []);
+
+  useEffect(() => {
     setQuestionsSocket(questions);
   }, [questions]);
 

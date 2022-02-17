@@ -13,6 +13,7 @@ import {
   POST_COMPANY,
   GET_ALL_COMPANIES,
   GET_QUESTION_BY_ID,
+  PATCH_QUESTION,
 } from './constants';
 
 import authService from '../services/auth';
@@ -207,6 +208,22 @@ export const postQuestion = async (dispatch, question) => {
   } catch (error) {
     // eslint-disable-next-line no-console
     return console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const patchQuestion = async (dispatch, answer) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.patchQuestion(answer);
+
+    if (response.ok) {
+      dispatch({ type: PATCH_QUESTION, payload: [] });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
   } finally {
     dispatch({ type: SET_LOADING, payload: false });
   }

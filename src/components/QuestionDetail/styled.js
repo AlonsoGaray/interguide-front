@@ -71,9 +71,31 @@ const TopRightContainer = styled.div`
 const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
   margin-top: 5px;
-  border-bottom: 1px solid #737373;
+`;
+
+const AnswersContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  div {
+    border-bottom: 1px solid #737373;
+  }
+  .answer {
+    padding-left: 20px;
+  }
+`;
+
+const NewAnswerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+
+  button {
+    width: 100px;
+    height: 50px;
+    margin: 15px auto;
+  }
 `;
 
 // eslint-disable-next-line prettier/prettier
@@ -83,4 +105,6 @@ export {
   TopRightContainer,
   BottomContainer,
   TopContainer,
+  AnswersContainer,
+  NewAnswerContainer,
 };
