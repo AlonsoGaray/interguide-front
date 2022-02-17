@@ -59,7 +59,6 @@ const NewQuestions = () => {
   }, [questionsSocket, questions]);
 
   useEffect(() => {
-    setQuestionsSocket(questions);
     if (questions.length !== 0) {
       const idMap = questions?.map((answer) => answer.userId).filter(unique);
       idMap?.forEach((a) => getUsersById(dispatch, a));
