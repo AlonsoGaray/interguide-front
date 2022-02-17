@@ -45,13 +45,6 @@ const NewQuestions = () => {
   }, []);
 
   useEffect(() => {
-    const idMap = questionsSocket
-      ?.map((answer) => answer.userId)
-      .filter(unique);
-    idMap?.forEach((a) => getUsersById(dispatch, a));
-  }, [questionsSocket]);
-
-  useEffect(() => {
     setQuestionsSocket(questions);
   }, [questions]);
 
@@ -65,6 +58,14 @@ const NewQuestions = () => {
     };
   }, [questionsSocket, questions]);
 
+  useEffect(() => {
+    if (questionsSocket.length !== 0) {
+      const idMap = questionsSocket
+        ?.map((answer) => answer.userId)
+        .filter(unique);
+      idMap?.forEach((a) => getUsersById(dispatch, a));
+    }
+  }, [questionsSocket]);
   return (
     <Container>
       <TopContainer>
@@ -75,7 +76,7 @@ const NewQuestions = () => {
       </TopContainer>
       <QuestionsContainer>
         {questionsSocket.length > 0 ? (
-          questionsSocket.map((q) => {
+          questionsSocket?.map((q) => {
             const filtered = usersById?.filter((data) => data.id === q.userId);
             const photo = cld.image(
               filtered[0]?.photo?.public_id || 'Default-Profile-Photo',

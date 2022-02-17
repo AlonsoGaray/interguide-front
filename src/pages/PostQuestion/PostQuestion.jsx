@@ -94,7 +94,8 @@ const PostQuestion = () => {
       setSelectedTags(null);
       setSelectedCompany(null);
       setTimeout(() => {
-        navigate('/');
+        navigate(-1);
+        // navigate('/')
       }, 1000);
     }
 
