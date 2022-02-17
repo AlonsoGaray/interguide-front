@@ -14,6 +14,7 @@ import {
   GET_ALL_COMPANIES,
   GET_QUESTION_BY_ID,
   PATCH_QUESTION,
+  GET_USERS_BY_ID,
 } from './constants';
 
 import authService from '../services/auth';
@@ -23,7 +24,6 @@ import questionService from '../services/question';
 import tagService from '../services/tag';
 import companyService from '../services/company';
 
-// eslint-disable-next-line import/prefer-default-export
 export const registerUser = async (dispatch, newUser) => {
   dispatch({ type: SET_LOADING, payload: true });
   try {
@@ -66,6 +66,24 @@ export const logout = (dispatch) => {
   localStorage.removeItem('token');
 
   dispatch({ type: LOGOUT_USER, payload: null });
+};
+
+export const getUsersById = async (dispatch, userId) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await userService.getUsersById(userId);
+
+    const data = await response.json();
+
+    if (response.ok) {
+      dispatch({ type: GET_USERS_BY_ID, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
 };
 
 export const getUserFromLocalStorage = async (dispatch) => {

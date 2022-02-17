@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import {
   REGISTER_USER,
   SET_LOADING,
@@ -12,10 +14,12 @@ import {
   GET_ALL_COMPANIES,
   GET_QUESTION_BY_ID,
   PATCH_QUESTION,
+  GET_USERS_BY_ID,
 } from './constants';
 
 const initialState = {
   user: null,
+  usersById: [],
   question: [],
   tagsDB: [],
   companyDB: [],
@@ -48,6 +52,14 @@ function reducer(state = initialState, action = '') {
         isLoading: newValue,
       };
     }
+    case GET_USERS_BY_ID:
+      if (!JSON.stringify(state.usersById).includes(JSON.stringify(newValue))) {
+        return {
+          ...state,
+          usersById: [...state.usersById, newValue],
+        };
+      }
+      return { ...state };
     case GET_USER_FROM_LOCALSTORAGE: {
       return {
         ...state,
