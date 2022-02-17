@@ -86,7 +86,7 @@ function reducer(state = initialState, action = '') {
     case POST_QUESTION: {
       return {
         ...state,
-        question: newValue,
+        question: [newValue],
       };
     }
     case PATCH_QUESTION: {

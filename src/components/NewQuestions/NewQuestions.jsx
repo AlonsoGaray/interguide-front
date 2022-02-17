@@ -46,6 +46,8 @@ const NewQuestions = () => {
 
   useEffect(() => {
     setQuestionsSocket(questions);
+    const idMap = questions?.map((answer) => answer.userId).filter(unique);
+    idMap?.forEach((a) => getUsersById(dispatch, a));
   }, [questions]);
 
   useEffect(() => {
@@ -58,12 +60,16 @@ const NewQuestions = () => {
     };
   }, [questionsSocket, questions]);
 
-  useEffect(() => {
-    if (questions.length !== 0) {
-      const idMap = questions?.map((answer) => answer.userId).filter(unique);
-      idMap?.forEach((a) => getUsersById(dispatch, a));
-    }
-  }, [questions]);
+  // useEffect(() => {
+  //   if (
+  //     questions.length !== 0 ||
+  //     questions.length !== undefined ||
+  //     questions.length !== null
+  //   ) {
+  //     const idMap = questions?.map((answer) => answer.userId).filter(unique);
+  //     idMap?.forEach((a) => getUsersById(dispatch, a));
+  //   }
+  // }, [questions]);
 
   return (
     <Container>
