@@ -54,10 +54,26 @@ const getQuestionById = (questionId) => {
   return fetch(`${URL_BASE}/api/questions/${questionId}`, payload);
 };
 
+const patchQuestion = (question) => {
+  const accessTokenObj = localStorage.getItem('token');
+  const { questionId } = question;
+  const payload = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessTokenObj}`,
+    },
+    body: JSON.stringify(question),
+  };
+
+  return fetch(`${URL_BASE}/api/questions/${questionId}`, payload);
+};
+
 const question = {
   createQuestion,
   getAllQuestions,
   getQuestionById,
+  patchQuestion,
 };
 
 export default question;

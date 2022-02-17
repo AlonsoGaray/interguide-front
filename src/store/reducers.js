@@ -11,6 +11,7 @@ import {
   POST_COMPANY,
   GET_ALL_COMPANIES,
   GET_QUESTION_BY_ID,
+  PATCH_QUESTION,
 } from './constants';
 
 const initialState = {
@@ -74,6 +75,12 @@ function reducer(state = initialState, action = '') {
       return {
         ...state,
         question: newValue,
+      };
+    }
+    case PATCH_QUESTION: {
+      return {
+        ...state,
+        questionById: newValue,
       };
     }
     case GET_ALL_TAGS: {

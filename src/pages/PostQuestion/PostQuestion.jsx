@@ -106,11 +106,6 @@ const PostQuestion = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const nameTags = tagsDB.map((tag) => tag.name);
-  //   setTagsName(nameTags);
-  // }, [tagsDB]);
-
   useEffect(() => {
     const validateForm = () => {
       if (Object.keys(form)?.length >= 1 && form?.question?.length > 2) {
