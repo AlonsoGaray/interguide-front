@@ -42,12 +42,11 @@ const NewQuestions = () => {
       await getQuestionsFromDB(dispatch);
     };
     getQuestions();
+  }, []);
+
+  useEffect(() => {
     setQuestionsSocket(questions);
   }, [questions]);
-
-  // useEffect(() => {
-  //   setQuestionsSocket(questions);
-  // }, [questions]);
 
   useEffect(() => {
     socket.on('question:create', (data) => {
@@ -60,7 +59,8 @@ const NewQuestions = () => {
   }, [questionsSocket, questions]);
 
   useEffect(() => {
-    if (questionsSocket.length !== 0) {
+    setQuestionsSocket(questions);
+    if (questions.length !== 0) {
       const idMap = questions?.map((answer) => answer.userId).filter(unique);
       idMap?.forEach((a) => getUsersById(dispatch, a));
     }
