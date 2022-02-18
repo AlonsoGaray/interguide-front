@@ -106,6 +106,11 @@ const NewAnswerContainer = styled.div`
   border-radius: 15px;
   background-color: #44a1a0;
 
+  p {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+
   button {
     width: 100px;
     height: 50px;

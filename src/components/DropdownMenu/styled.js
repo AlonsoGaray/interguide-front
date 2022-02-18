@@ -4,12 +4,17 @@ const Dropdown = styled.div`
   position: absolute;
   top: 58px;
   width: 250px;
-  transform: translateX(-75%);
+  transform: translateX(-80%);
   background-color: #33353d;
   border: 1px solid #474a4d;
   border-radius: 8px;
   padding: 0.2rem;
   overflow: hidden;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
 
   img {
     width: 55px;

@@ -9,6 +9,7 @@ import {
   InputContainer,
   Button,
   RegisterContainer,
+  Container,
 } from './styled';
 
 const Login = () => {
@@ -54,10 +55,11 @@ const Login = () => {
   }, [handleSubmit]);
 
   return (
-    <>
+    <Container>
       <Form onSubmit={handleSubmit}>
         <LogoContainer>
-          <p>The place to share your interviews and help others</p>
+          <h1>interguide</h1>
+          <p>The place to share and help each other</p>
         </LogoContainer>
 
         <InputContainer>
@@ -65,7 +67,7 @@ const Login = () => {
             data-cy="login-input_email"
             name="email"
             type="email"
-            placeholder="email"
+            placeholder="Email"
             value={undefined}
             onChange={handleChange}
             required
@@ -75,14 +77,14 @@ const Login = () => {
             name="password"
             type="password"
             value={undefined}
-            placeholder="password"
+            placeholder="Password"
             onChange={handleChange}
             required
           />
         </InputContainer>
 
         <Button data-cy="login-btn_login" type="submit" disabled={!formOk}>
-          Log In
+          LOGIN
         </Button>
 
         {/* <p className="form_login__text">o Ingresa con:</p>
@@ -105,11 +107,11 @@ const Login = () => {
 
         <RegisterContainer>
           <p>Don&apos;t have an account?</p>
-          <Link to="/register">Sign up</Link>
+          <Link to="/register">SIGN UP</Link>
         </RegisterContainer>
       </Form>
       {formData ? <p>{formData.message}</p> : null}
-    </>
+    </Container>
   );
 };
 

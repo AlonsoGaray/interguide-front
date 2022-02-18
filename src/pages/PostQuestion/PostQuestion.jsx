@@ -134,7 +134,7 @@ const PostQuestion = () => {
     <div>
       {user ? (
         <Container>
-          <p>Post The Question</p>
+          <h1 className="title">Post The Question</h1>
           <FormContainer onSubmit={handleSubmit}>
             <p>Company</p>
             <Creatable

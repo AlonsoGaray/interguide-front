@@ -8,7 +8,8 @@ import {
   LogoContainer,
   InputContainer,
   Button,
-  RegisterContainer,
+  LoginContainer,
+  Container,
 } from './styled';
 
 const Register = () => {
@@ -58,9 +59,10 @@ const Register = () => {
   }, [formData]);
 
   return (
-    <>
+    <Container>
       <Form onSubmit={handleSubmit}>
         <LogoContainer>
+          <h1>interguide</h1>
           <p>The place to share your interviews and help others</p>
         </LogoContainer>
 
@@ -138,17 +140,17 @@ const Register = () => {
           </Link>
         </div> */}
 
-        <RegisterContainer>
+        <LoginContainer>
           <p>Already have an account?</p>
-          <Link to="/login">Login</Link>
-        </RegisterContainer>
+          <Link to="/login">LOGIN</Link>
+        </LoginContainer>
       </Form>
       {formData?.error ? (
         <p className="alert">
           {Object.keys(formData?.error)} is already in use
         </p>
       ) : null}
-    </>
+    </Container>
   );
 };
 

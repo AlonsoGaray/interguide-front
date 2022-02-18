@@ -6,6 +6,12 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   min-height: 500px;
+  margin-bottom: 30px;
+
+  .title {
+    font-size: 30px;
+    margin: 20px 0;
+  }
 `;
 
 const FormContainer = styled.form`
@@ -19,13 +25,13 @@ const FormContainer = styled.form`
 
   p {
     margin-left: 20px;
-    margin-top: 30px;
+    margin-top: 25px;
   }
 
   .input-question {
     width: 90%;
     height: 35px;
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
     box-sizing: border-box;
     padding-left: 8px;
     font-size: 16px;
@@ -40,7 +46,11 @@ const FormContainer = styled.form`
 
   .css-b62m3t-container {
     width: 90%;
-    margin: auto;
+    margin: 10px auto 0 auto;
+  }
+
+  .tox-tinymce {
+    margin-top: 10px;
   }
 
   .css-1rhbuit-multiValue {
