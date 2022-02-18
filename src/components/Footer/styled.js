@@ -7,10 +7,10 @@ const FooterCont = styled.footer`
   line-height: 20px;
   margin-top: 10px;
   border-top: thin solid gray;
-  color: #737373;
+  color: #33353d;
 
   h6 {
-    color: #737373;
+    color: #33353d;
     margin: 20px 0;
     font-size: 16px;
     text-transform: uppercase;
@@ -18,7 +18,7 @@ const FooterCont = styled.footer`
   }
 
   a {
-    color: #737373;
+    color: #33353d;
   }
 
   a:hover {
@@ -79,7 +79,7 @@ const UlLinks = styled.ul`
   margin: 0 0 10px 0;
   padding: 0;
   a {
-    color: #737373;
+    color: #33353d;
   }
   a:link {
     text-decoration: none;
@@ -96,6 +96,7 @@ const BottomContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin-top: 10px;
 
   @media (min-width: 769px) {
     flex-direction: row;

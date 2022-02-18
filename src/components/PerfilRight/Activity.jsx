@@ -7,9 +7,9 @@ const Activity = () => {
   const navigate = useNavigate();
   return (
     <Container>
-      <p>asd</p>
+      <p>Building in progess...</p>
       <button type="button" onClick={() => navigate('/')}>
-        hola
+        Home Page
       </button>
     </Container>
   );

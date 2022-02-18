@@ -13,7 +13,7 @@ import {
   SingleContainer,
   RightSingleContainer,
   LeftSingleContainer,
-  MidSingleContainer,
+  UserInfoContainer,
 } from './styled';
 import { getUsersById, getQuestionsFromDB } from '../../store/actions';
 import Loader from '../Loader';
@@ -60,21 +60,10 @@ const NewQuestions = () => {
     };
   }, [questionsSocket, questions]);
 
-  // useEffect(() => {
-  //   if (
-  //     questions.length !== 0 ||
-  //     questions.length !== undefined ||
-  //     questions.length !== null
-  //   ) {
-  //     const idMap = questions?.map((answer) => answer.userId).filter(unique);
-  //     idMap?.forEach((a) => getUsersById(dispatch, a));
-  //   }
-  // }, [questions]);
-
   return (
     <Container>
       <TopContainer>
-        <p className="title">New Questions</p>
+        <h1 className="title">Recent Questions</h1>
         <button type="button" onClick={() => navigate('/post-question')}>
           Post a Question
         </button>
@@ -89,6 +78,13 @@ const NewQuestions = () => {
             return (
               <SingleContainer key={q._id}>
                 <LeftSingleContainer>
+                  <UserInfoContainer>
+                    <p>
+                      posted by: {filtered[0]?.firstName}{' '}
+                      {filtered[0]?.lastName}
+                    </p>
+                    <AdvancedImage cldImg={photo} />
+                  </UserInfoContainer>
                   <span>
                     <Link to={`/question/${q._id}`}>{q.question}</Link>
                   </span>
@@ -100,11 +96,6 @@ const NewQuestions = () => {
                     ))}
                   </div>
                 </LeftSingleContainer>
-
-                <MidSingleContainer>
-                  <p>{filtered[0]?.email}</p>
-                  <AdvancedImage cldImg={photo} />
-                </MidSingleContainer>
 
                 <RightSingleContainer>
                   <p>Answers: {q.answers.length}</p>

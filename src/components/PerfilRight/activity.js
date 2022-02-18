@@ -5,8 +5,13 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
 
+  button {
+    font-size: 18px;
+    width: 100px;
+    height: 60px;
+  }
+
   @media (min-width: 1025px) {
-    flex-direction: row;
     align-items: center;
     justify-content: center;
     width: 69%;
