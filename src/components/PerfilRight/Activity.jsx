@@ -8,9 +8,14 @@ const Activity = () => {
   return (
     <Container>
       <p>Building in progess...</p>
-      <button type="button" onClick={() => navigate('/')}>
-        Home Page
-      </button>
+      <div className="buttons">
+        <button type="button" onClick={() => navigate('/')}>
+          Home Page
+        </button>
+        <button type="button" onClick={() => navigate('/mi-perfil/settings')}>
+          Profile Settings
+        </button>
+      </div>
     </Container>
   );
 };

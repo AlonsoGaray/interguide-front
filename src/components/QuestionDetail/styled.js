@@ -115,6 +115,11 @@ const NewAnswerContainer = styled.div`
     border: 1px solid transparent;
     border-radius: 20px;
     background-color: rgb(10, 149, 255);
+
+    &:hover {
+      background-color: #0074cc;
+      cursor: pointer;
+    }
   }
 `;
 
