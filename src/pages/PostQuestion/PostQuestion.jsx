@@ -31,8 +31,6 @@ const PostQuestion = () => {
 
   const profileForm = {
     userId: user?.id,
-    firstName: user?.firstName,
-    lastName: user?.lastName,
     tag: [],
     company: undefined,
     answers: [],
@@ -94,8 +92,7 @@ const PostQuestion = () => {
       setSelectedTags(null);
       setSelectedCompany(null);
       setTimeout(() => {
-        navigate(-1);
-        // navigate('/')
+        navigate('/');
       }, 1000);
     }
 
@@ -177,7 +174,6 @@ const PostQuestion = () => {
                 init={{
                   placeholder: 'Type Your Answer Here',
                   height: 300,
-                  menubar: false,
                   plugins: [
                     'advlist autolink lists link image charmap print preview anchor',
                     'searchreplace visualblocks code fullscreen',

@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react';
@@ -23,6 +21,7 @@ import {
   AnswersContainer,
   NewAnswerContainer,
   InfoContainer,
+  SingleAnswerContainer,
 } from './styled';
 import Loader from '../Loader';
 
@@ -118,7 +117,7 @@ const QuestionDetail = () => {
                   filtered[0]?.photo?.public_id || 'Default-Profile-Photo',
                 );
                 return (
-                  <div key={answer._id}>
+                  <SingleAnswerContainer key={answer._id}>
                     <InfoContainer>
                       <AdvancedImage cldImg={photo} />
                       <p>
@@ -131,7 +130,7 @@ const QuestionDetail = () => {
                         __html: answer.description,
                       }}
                     />
-                  </div>
+                  </SingleAnswerContainer>
                 );
               })}
             </AnswersContainer>

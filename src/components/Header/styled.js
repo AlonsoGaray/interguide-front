@@ -18,7 +18,7 @@ const HeaderContainer = styled.header`
 const Logo = styled.h1`
   font-family: lato;
   margin-left: 10px;
-  color: #33353d;
+  color: rgb(10, 149, 255);
 
   &:hover {
     cursor: pointer;

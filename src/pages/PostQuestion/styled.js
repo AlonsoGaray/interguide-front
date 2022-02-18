@@ -6,11 +6,6 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   min-height: 500px;
-  border: 1px solid green;
-
-  p {
-    margin-left: 20px;
-  }
 `;
 
 const FormContainer = styled.form`
@@ -18,9 +13,12 @@ const FormContainer = styled.form`
   flex-direction: column;
   width: 90%;
   height: 90%;
-  border: 1px solid red;
+  outline: 1px solid #737373;
+  border-radius: 15px;
+  background-color: #44a1a0;
 
   p {
+    margin-left: 20px;
     margin-top: 30px;
   }
 
@@ -44,13 +42,33 @@ const FormContainer = styled.form`
     width: 90%;
     margin: auto;
   }
+
+  .css-1rhbuit-multiValue {
+    color: black;
+    border-radius: 15px;
+    background-color: rgb(10, 149, 255);
+  }
+
+  .css-xb97g8:hover {
+    border-radius: 15px;
+    background-color: rgb(10, 149, 255);
+  }
 `;
 
 const SubmitButton = styled.button`
-  margin: 0 auto;
-  margin-top: 20px;
-  width: 100px;
-  height: 40px;
+  margin: 15px auto;
+  width: 120px;
+  height: 45px;
+  font-size: 24px;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  background-color: #0074cc;
+
+  &:hover {
+    background-color: rgb(10, 149, 255);
+    cursor: pointer;
+  }
 `;
 
 const EditorContainer = styled.div`

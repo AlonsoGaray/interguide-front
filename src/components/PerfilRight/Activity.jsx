@@ -7,10 +7,15 @@ const Activity = () => {
   const navigate = useNavigate();
   return (
     <Container>
-      <p>asd</p>
-      <button type="button" onClick={() => navigate('/')}>
-        hola
-      </button>
+      <p>Building in progess...</p>
+      <div className="buttons">
+        <button type="button" onClick={() => navigate('/')}>
+          Home Page
+        </button>
+        <button type="button" onClick={() => navigate('/mi-perfil/settings')}>
+          Profile Settings
+        </button>
+      </div>
     </Container>
   );
 };

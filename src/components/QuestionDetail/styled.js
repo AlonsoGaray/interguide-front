@@ -38,6 +38,8 @@ const TopLeftContainer = styled.div`
 
   h2 {
     margin: 0;
+    font-size: 27px;
+    color: #33353d;
   }
 
   p {
@@ -59,12 +61,12 @@ const TopRightContainer = styled.div`
 
   p {
     margin: 8px;
-    font-size: 12px;
+    font-size: 15px;
   }
 
   @media (min-width: 768px) {
     flex-direction: column;
-    width: 20%;
+    width: 25%;
   }
 `;
 
@@ -80,7 +82,6 @@ const AnswersContainer = styled.div`
 
   .answer {
     padding: 0 30px;
-    border-bottom: 1px solid #737373;
 
     p {
       margin: 10px 0;
@@ -88,15 +89,37 @@ const AnswersContainer = styled.div`
   }
 `;
 
+const SingleAnswerContainer = styled.div`
+  padding: 5px 0;
+  margin: 10px;
+  outline: 1px solid #737373;
+  border-radius: 15px;
+  background-color: #44a1a0;
+`;
+
 const NewAnswerContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0 20px;
+  margin: 10px;
+  outline: 1px solid #737373;
+  border-radius: 15px;
+  background-color: #44a1a0;
 
   button {
     width: 100px;
     height: 50px;
     margin: 15px auto;
+    font-size: 18px;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    background-color: rgb(10, 149, 255);
+
+    &:hover {
+      background-color: #0074cc;
+      cursor: pointer;
+    }
   }
 `;
 
@@ -128,4 +151,5 @@ export {
   AnswersContainer,
   NewAnswerContainer,
   InfoContainer,
+  SingleAnswerContainer,
 };
