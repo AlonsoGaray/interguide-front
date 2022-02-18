@@ -12,6 +12,7 @@ import Questions from './components/Questions/Questions';
 import Companies from './components/Companies/Companies';
 import PostQuestion from './pages/PostQuestion/PostQuestion';
 import QuestionDetail from './components/QuestionDetail/QuestionDetail';
+import './App.css';
 
 const App = () => {
   return (
