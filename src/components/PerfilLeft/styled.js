@@ -4,6 +4,7 @@ const SuperContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  border-right: 1px solid black;
 
   @media (min-width: 1025px) {
     width: 29%;

@@ -20,7 +20,7 @@ import Loader from '../Loader';
 
 const CLOUD = process.env.REACT_APP_CLOUD_NAME;
 
-const NewQuestions = () => {
+const RecentQuestions = () => {
   const usersById = useSelector((state) => state.usersById);
   const questions = useSelector((state) => state.question);
   const navigate = useNavigate();
@@ -85,9 +85,7 @@ const NewQuestions = () => {
                     </p>
                     <AdvancedImage cldImg={photo} />
                   </UserInfoContainer>
-                  <span>
-                    <Link to={`/question/${q._id}`}>{q.question}</Link>
-                  </span>
+                  <Link to={`/question/${q._id}`}>{q.question}</Link>
                   <div className="tags">
                     {q.tag.map((tag) => (
                       <p className="tag" key={tag._id}>
@@ -113,4 +111,4 @@ const NewQuestions = () => {
   );
 };
 
-export default NewQuestions;
+export default RecentQuestions;

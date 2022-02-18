@@ -39,8 +39,7 @@ const DropdownMenu = () => {
         redirect="/mi-perfil"
         leftIcon={<AdvancedImage cldImg={myImage} />}
       >
-        <br />
-        &nbsp;&nbsp; My Profile
+        &nbsp;My Profile
       </DropdownItem>
       <DropdownItem
         redirect="/"

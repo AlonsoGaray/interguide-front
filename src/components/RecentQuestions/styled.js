@@ -20,13 +20,15 @@ const Container = styled.div`
 const TopContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 10px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
   border-bottom: 1px solid #737373;
 
   button {
     margin-right: 10px;
-    width: 120px;
+    width: 150px;
+    height: 60px;
     font-size: 16px;
     color: white;
     border: 1px solid transparent;
@@ -37,9 +39,6 @@ const TopContainer = styled.div`
       background-color: #0074cc;
       cursor: pointer;
     }
-  }
-  @media (min-width: 768px) {
-    margin-top: 15px;
   }
 `;
 
@@ -87,7 +86,7 @@ const LeftSingleContainer = styled.div`
 
   a {
     font-size: 24px;
-    margin: 0 10px;
+    margin: 8px 0 0 10px;
     padding: 0 10px;
 
     &:link {

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   margin: 10px;
   padding: 5px 0;
   outline: 1px solid #737373;
@@ -47,20 +46,27 @@ const Button = styled.button`
 
 const Inputcontainer = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
   flex-direction: column;
+  align-items: center;
+  padding: 0 10px 10px 10px;
   outline: 1px solid black;
   border-radius: 20px;
   margin: 10px 5px;
+
+  p {
+    margin: 15px 0;
+  }
 `;
 
 const Input = styled.input`
   width: 300px;
-  height: 30px;
-  padding: 0 20px;
-  border-radius: 15px;
+  height: 28px;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 31px;
+  background-color: #fff;
 `;
 
 // eslint-disable-next-line prettier/prettier
