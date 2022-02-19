@@ -41,7 +41,7 @@ const FormContainer = styled.form`
   }
 
   .css-26l3qy-menu {
-    z-index: 9999;
+    z-index: 5;
   }
 
   .css-b62m3t-container {

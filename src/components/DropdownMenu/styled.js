@@ -10,6 +10,7 @@ const Dropdown = styled.div`
   border-radius: 8px;
   padding: 0.2rem;
   overflow: hidden;
+  z-index: 6;
 
   a {
     display: flex;
