@@ -7,11 +7,12 @@ import Activity from './components/PerfilRight/Activity';
 import Settings from './components/PerfilRight/Settings';
 import Home from './pages/Home/Home';
 import RecentQuestions from './components/RecentQuestions/RecentQuestions';
-import Tags from './components/Tags/Tags';
-import Questions from './components/Questions/Questions';
-import Companies from './components/Companies/Companies';
+// import Tags from './components/Tags/Tags';
+// import Questions from './components/Questions/Questions';
+// import Companies from './components/Companies/Companies';
 import PostQuestion from './pages/PostQuestion/PostQuestion';
 import QuestionDetail from './components/QuestionDetail/QuestionDetail';
+import ComingSoon from './components/ComingSoon/ComingSoon';
 import './App.css';
 
 const App = () => {
@@ -25,9 +26,7 @@ const App = () => {
           {/* Start Home */}
           <Route path="" element={<Home />}>
             <Route path="" element={<RecentQuestions />} />
-            <Route path="questions" element={<Questions />} />
-            <Route path="companies" element={<Companies />} />
-            <Route path="tags" element={<Tags />} />
+
             {/* Start Question */}
             <Route path="question">
               <Route path=":id" element={<QuestionDetail />} />
@@ -42,6 +41,16 @@ const App = () => {
           </Route>
           {/* End Mi Perfil */}
         </Route>
+        <Route path="questions" element={<ComingSoon page="Questions" />} />
+        <Route path="companies" element={<ComingSoon page="Companies" />} />
+        <Route path="tags" element={<ComingSoon page="Tags" />} />
+        <Route path="about" element={<ComingSoon page="About" />} />
+        <Route path="contact-us" element={<ComingSoon page="Contact Us" />} />
+        <Route path="contribute" element={<ComingSoon page="Contribute" />} />
+        <Route
+          path="privacy-policy"
+          element={<ComingSoon page="Privacy Policy" />}
+        />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Routes>

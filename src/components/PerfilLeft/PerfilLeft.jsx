@@ -66,7 +66,8 @@ const PerfilLeft = () => {
         </DataContainer>
         <div
           style={{
-            borderTop: '2px solid #737373',
+            borderTop: '1px solid #737373',
+            marginTop: '10px',
           }}
         />
         <TabContainer>

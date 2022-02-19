@@ -35,6 +35,7 @@ const TopContainer = styled.div`
   @media (min-width: 1025px) {
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: 15px;
   }
 `;
 

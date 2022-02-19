@@ -5,14 +5,15 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
 
+
   .buttons {
     display: flex;
-    width 230px;
+    width 260px;
     justify-content: space-around;
 
     button {
-    width: 100px;
-    height: 50px;
+    width: 120px;
+    height: 60px;
     margin: 15px 0;
     font-size: 18px;
     color: white;
@@ -20,13 +21,11 @@ const Container = styled.div`
     border-radius: 20px;
     background-color: #0074cc;
 
-    &:hover {
-      background-color: rgb(10, 149, 255);
-      cursor: pointer;
+      &:hover {
+        background-color: rgb(10, 149, 255);
+        cursor: pointer;
+      }
     }
-  }
-
-
   }
 
   @media (min-width: 1025px) {
