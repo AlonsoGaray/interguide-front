@@ -52,6 +52,29 @@ const TopLeftContainer = styled.div`
   }
 `;
 
+const VoteContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .active {
+    color: rgb(10, 149, 255);
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+  }
+`;
+
 const TopRightContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -157,4 +180,5 @@ export {
   NewAnswerContainer,
   InfoContainer,
   SingleAnswerContainer,
+  VoteContainer,
 };

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -147,6 +146,7 @@ const RecentQuestions = () => {
                     </button>
                   )}
                 </VoteContainer>
+
                 <RightSingleContainer>
                   <p>Answers: {q.answers.length}</p>
                   <p>Likes: {q.voteCount}</p>
