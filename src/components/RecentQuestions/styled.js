@@ -112,12 +112,35 @@ const LeftSingleContainer = styled.div`
     margin: 5px 10px;
     padding: 8px;
     border-radius: 20px;
-    background-color: rgb(119, 255, 255);
+    background-color: #00d3eb;
   }
 
   @media (min-width: 768px) {
     flex-direction: column;
     width: 80%;
+  }
+`;
+
+const VoteContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+
+  .active {
+    color: rgb(10, 149, 255);
+  }
+
+  svg {
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
   }
 `;
 
@@ -146,4 +169,5 @@ export {
   RightSingleContainer,
   LeftSingleContainer,
   UserInfoContainer,
+  VoteContainer,
 };

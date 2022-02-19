@@ -247,6 +247,70 @@ export const patchQuestion = async (dispatch, answer) => {
   }
 };
 
+export const upVoteQuestion = async (dispatch, data) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.upVoteQuestion(data);
+
+    if (!response.ok) {
+      dispatch({ type: PATCH_QUESTION, payload: [] });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const downVoteQuestion = async (dispatch, data) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.downVoteQuestion(data);
+
+    if (!response.ok) {
+      dispatch({ type: PATCH_QUESTION, payload: [] });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const neutralUpVoteQuestion = async (dispatch, data) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.neutralUpVoteQuestion(data);
+
+    if (!response.ok) {
+      dispatch({ type: PATCH_QUESTION, payload: [] });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const neutralDownVoteQuestion = async (dispatch, data) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await questionService.neutralDownVoteQuestion(data);
+
+    if (!response.ok) {
+      dispatch({ type: PATCH_QUESTION, payload: [] });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
 export const postCompany = async (dispatch, company) => {
   dispatch({ type: SET_LOADING, payload: true });
   try {

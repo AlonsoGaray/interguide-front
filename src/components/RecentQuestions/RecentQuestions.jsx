@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
@@ -5,6 +6,9 @@ import { useNavigate, Link } from 'react-router-dom';
 import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { useSelector, useDispatch } from 'react-redux';
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import socket from '../../utils/socket';
 import {
   Container,
@@ -14,18 +18,43 @@ import {
   RightSingleContainer,
   LeftSingleContainer,
   UserInfoContainer,
+  VoteContainer,
 } from './styled';
-import { getUsersById, getQuestionsFromDB } from '../../store/actions';
+import {
+  getUsersById,
+  getQuestionsFromDB,
+  upVoteQuestion,
+  downVoteQuestion,
+} from '../../store/actions';
 import Loader from '../Loader';
 
 const CLOUD = process.env.REACT_APP_CLOUD_NAME;
 
 const RecentQuestions = () => {
+  const user = useSelector((state) => state.user);
   const usersById = useSelector((state) => state.usersById);
   const questions = useSelector((state) => state.question);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [questionsSocket, setQuestionsSocket] = useState([]);
+
+  const handleUpVote = async (e, questionID) => {
+    e.preventDefault();
+    const data = {
+      questionID,
+      userId: user.id,
+    };
+    await upVoteQuestion(dispatch, data);
+  };
+
+  const handleDownVote = async (e, questionID) => {
+    e.preventDefault();
+    const data = {
+      questionID,
+      userId: user.id,
+    };
+    await downVoteQuestion(dispatch, data);
+  };
 
   const cld = new Cloudinary({
     cloud: {
@@ -55,8 +84,13 @@ const RecentQuestions = () => {
       setQuestionsSocket([...questionsSocket, data]);
     });
 
+    socket.on('question:update', () => {
+      getQuestionsFromDB(dispatch);
+    });
+
     return () => {
       socket.off('question:create');
+      socket.off('question:update');
     };
   }, [questionsSocket, questions]);
 
@@ -71,6 +105,7 @@ const RecentQuestions = () => {
       <QuestionsContainer>
         {questionsSocket.length > 0 ? (
           questionsSocket?.map((q) => {
+            const voteCheck = q.votes.some((qwe) => qwe.userId === user.id);
             const filtered = usersById?.filter((data) => data.id === q.userId);
             const photo = cld.image(
               filtered[0]?.photo?.public_id || 'Default-Profile-Photo',
@@ -95,9 +130,28 @@ const RecentQuestions = () => {
                   </div>
                 </LeftSingleContainer>
 
+                <VoteContainer>
+                  {!voteCheck ? (
+                    <button
+                      type="button"
+                      id={q._id}
+                      onClick={(e) => handleUpVote(e, e.target.id)}
+                    >
+                      <ThumbUpOutlinedIcon className="normal" />
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      id={q._id}
+                      onClick={(e) => handleDownVote(e, e.target.id)}
+                    >
+                      <ThumbUpOutlinedIcon id={q._id} className="active" />
+                    </button>
+                  )}
+                </VoteContainer>
                 <RightSingleContainer>
                   <p>Answers: {q.answers.length}</p>
-                  <p>Votes: {q.vote}</p>
+                  <p>Likes: {q.voteCount}</p>
                   <p>Company: {q.company}</p>
                 </RightSingleContainer>
               </SingleContainer>
