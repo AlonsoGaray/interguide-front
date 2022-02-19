@@ -16,7 +16,7 @@ const HeaderContainer = styled.header`
 `;
 
 const Logo = styled.h1`
-  font-family: lato;
+  font-family: 'Lato', sans-serif;
   margin-left: 10px;
   color: rgb(10, 149, 255);
 

@@ -107,6 +107,9 @@ const BottomContainer = styled.div`
 `;
 
 const CopyRightContainer = styled.div`
+  a {
+    text-decoration: none;
+  }
   @media (min-width: 769px) {
     margin-left: 50px;
   }

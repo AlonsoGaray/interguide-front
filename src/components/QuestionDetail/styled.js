@@ -94,7 +94,7 @@ const SingleAnswerContainer = styled.div`
   margin: 10px;
   outline: 1px solid #737373;
   border-radius: 15px;
-  background-color: #44a1a0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 `;
 
 const NewAnswerContainer = styled.div`

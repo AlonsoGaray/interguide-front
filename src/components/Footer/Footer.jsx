@@ -25,11 +25,9 @@ const Footer = () => {
           <h6>About</h6>
           <p>
             Interguide.com <i>THE ONLY GUIDE YOU WILL NEED</i> is an initiative
-            to help programmers is search of a job. Interguide focuses on
-            building a community of users that provide the most frequent
-            questions they had been asked in a job interview. We will help
-            programmers in different programming languages but for now we only
-            include HTML, CSS, JavaScript and, React.
+            to help programmers in looking for a job. Interguide focuses on
+            building a community of programmers that provide the most frequent
+            questions they had been asked in a job interview.
           </p>
         </AboutContainer>
         <DoubleContainer>
