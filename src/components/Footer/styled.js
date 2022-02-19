@@ -35,6 +35,7 @@ const TopContainer = styled.div`
   @media (min-width: 1025px) {
     flex-direction: row;
     justify-content: space-around;
+    margin-bottom: 15px;
   }
 `;
 
@@ -106,6 +107,9 @@ const BottomContainer = styled.div`
 `;
 
 const CopyRightContainer = styled.div`
+  a {
+    text-decoration: none;
+  }
   @media (min-width: 769px) {
     margin-left: 50px;
   }

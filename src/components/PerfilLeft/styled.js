@@ -4,10 +4,12 @@ const SuperContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 
   @media (min-width: 1025px) {
     width: 29%;
+    border-bottom: none;
+    border-right: 1px solid black;
   }
 `;
 
@@ -15,19 +17,12 @@ const DataContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   height: 250px;
 
   p {
     color: #33353d;
-    margin: 15px;
   }
-`;
-
-const ProfileImg = styled.img`
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
 `;
 
 const TabContainer = styled.div`
@@ -53,8 +48,12 @@ const ProfileButton = styled.button`
   height: 7rem;
   background-color: #fff;
   border-radius: 100%;
-  cursor: pointer;
   border-style: solid;
+  margin-top: 10px;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   img {
     height: 100%;
@@ -143,6 +142,10 @@ const InputGroup = styled.div`
     padding: 0 10px 5px 0;
     width: 100%;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     @media screen and (min-width: 769px) {
       font-size: 1.3rem;
     }
@@ -163,24 +166,24 @@ const InputGroup = styled.div`
 
 const UpdateButton = styled.button`
   margin: auto;
-  margin-top: 30px;
+  margin-top: 20px;
   width: 120px;
   height: 50px;
-  background-color: black;
+  background-color: #0074cc;
   color: white;
   font-size: 1.3em;
   font-weight: bold;
-  border-radius: 10px;
-  border-style: solid;
+  border: 1px solid transparent;
+  border-radius: 20px;
 
   &:hover {
-    font-size: 2rem;
+    background-color: rgb(10, 149, 255);
     cursor: pointer;
   }
 
   @media screen and (min-width: 1025px) {
     font-size: 1.6em;
-    width: 210px;
+    width: 160px;
     height: 80px;
   }
 `;
@@ -188,7 +191,6 @@ const UpdateButton = styled.button`
 export {
   SuperContainer,
   DataContainer,
-  ProfileImg,
   TabContainer,
   ProfileButton,
   PhotoContainer,

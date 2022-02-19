@@ -54,7 +54,7 @@ const SingleContainer = styled.div`
   padding: 5px 0;
   outline: 1px solid #737373;
   border-radius: 15px;
-  background-color: #44a1a0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -94,11 +94,10 @@ const LeftSingleContainer = styled.div`
     }
 
     &:visited {
-      color: white;
+      color: black;
     }
 
     &:hover {
-      color: white;
       text-decoration: underline;
     }
   }
@@ -113,7 +112,7 @@ const LeftSingleContainer = styled.div`
     margin: 5px 10px;
     padding: 8px;
     border-radius: 20px;
-    background-color: rgb(10, 149, 255);
+    background-color: rgb(119, 255, 255);
   }
 
   @media (min-width: 768px) {

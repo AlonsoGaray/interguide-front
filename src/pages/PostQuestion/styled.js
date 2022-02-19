@@ -21,7 +21,7 @@ const FormContainer = styled.form`
   height: 90%;
   outline: 1px solid #737373;
   border-radius: 15px;
-  background-color: #44a1a0;
+  background-color: #e5e5e5;
 
   p {
     margin-left: 20px;
@@ -56,12 +56,12 @@ const FormContainer = styled.form`
   .css-1rhbuit-multiValue {
     color: black;
     border-radius: 15px;
-    background-color: rgb(10, 149, 255);
+    background-color: rgb(119, 255, 255);
   }
 
   .css-xb97g8:hover {
     border-radius: 15px;
-    background-color: rgb(10, 149, 255);
+    background-color: rgb(119, 255, 255);
   }
 `;
 
@@ -73,10 +73,10 @@ const SubmitButton = styled.button`
   color: white;
   border: 1px solid transparent;
   border-radius: 20px;
-  background-color: #0074cc;
+  background-color: rgb(10, 149, 255);
 
   &:hover {
-    background-color: rgb(10, 149, 255);
+    background-color: #0074cc;
     cursor: pointer;
   }
 `;

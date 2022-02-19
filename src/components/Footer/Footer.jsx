@@ -2,6 +2,7 @@
 import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import { Link } from 'react-router-dom';
 import {
   FooterCont,
   TopContainer,
@@ -24,11 +25,9 @@ const Footer = () => {
           <h6>About</h6>
           <p>
             Interguide.com <i>THE ONLY GUIDE YOU WILL NEED</i> is an initiative
-            to help programmers is search of a job. Interguide focuses on
-            building a community of users that provide the most frequent
-            questions they had been asked in a job interview. We will help
-            programmers in different programming languages but for now we only
-            include HTML, CSS, JavaScript and, React.
+            to help programmers in looking for a job. Interguide focuses on
+            building a community of programmers that provide the most frequent
+            questions they had been asked in a job interview.
           </p>
         </AboutContainer>
         <DoubleContainer>
@@ -36,28 +35,16 @@ const Footer = () => {
             <h6>Categories</h6>
             <UlLinks>
               <li>
-                <a href="http://scanfcode.com/category/c-language/">C</a>
+                <Link to="/tags">JavaScript</Link>
               </li>
               <li>
-                <a href="http://scanfcode.com/category/front-end-development/">
-                  UI Design
-                </a>
+                <Link to="/tags">HTML</Link>
               </li>
               <li>
-                <a href="http://scanfcode.com/category/back-end-development/">
-                  PHP
-                </a>
+                <Link to="/tags">React</Link>
               </li>
               <li>
-                <a href="http://scanfcode.com/category/java-programming-language/">
-                  Java
-                </a>
-              </li>
-              <li>
-                <a href="http://scanfcode.com/category/android/">Android</a>
-              </li>
-              <li>
-                <a href="http://scanfcode.com/category/templates/">Templates</a>
+                <Link to="/tags">Java</Link>
               </li>
             </UlLinks>
           </CompaniesContainer>
@@ -66,23 +53,16 @@ const Footer = () => {
             <h6>Quick Links</h6>
             <UlLinks>
               <li>
-                <a href="http://scanfcode.com/about/">About Us</a>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <a href="http://scanfcode.com/contact/">Contact Us</a>
+                <Link to="/contact-us">Contact Us</Link>
               </li>
               <li>
-                <a href="http://scanfcode.com/contribute-at-scanfcode/">
-                  Contribute
-                </a>
+                <Link to="/contribute">Contribute</Link>
               </li>
               <li>
-                <a href="http://scanfcode.com/privacy-policy/">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="http://scanfcode.com/sitemap/">Sitemap</a>
+                <Link to="/privacy-policy">Privacy Policy</Link>
               </li>
             </UlLinks>
           </LinksContainer>
