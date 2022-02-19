@@ -155,6 +155,11 @@ const RightCallContainer = styled.div`
     font-weight: bold;
     border: 0.2px solid gray;
     border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #0074cc;
+    }
   }
 
   @media (min-width: 768px) {
