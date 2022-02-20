@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/no-danger */
 import React, { useEffect, useState } from 'react';
@@ -41,10 +40,6 @@ const QuestionDetail = () => {
   const questionById = useSelector((state) => state.questionById);
 
   const [questionSocket, setQuestionSocket] = useState([]);
-  console.log(
-    '🚀 ~ file: QuestionDetail.jsx ~ line 42 ~ QuestionDetail ~ questionSocket',
-    questionSocket,
-  );
   const [newAnswer, setNewAnser] = useState('');
 
   const handleUpVote = async (e, questionID) => {

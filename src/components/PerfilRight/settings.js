@@ -7,7 +7,7 @@ const Container = styled.div`
   padding: 5px 0;
   outline: 1px solid #737373;
   border-radius: 15px;
-  background-color: #44a1a0;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   @media (min-width: 1025px) {
     width: 69%;
@@ -36,10 +36,10 @@ const Button = styled.button`
   color: white;
   border: 1px solid transparent;
   border-radius: 20px;
-  background-color: #0074cc;
+  background-color: rgb(10, 149, 255);
 
   &:hover {
-    background-color: rgb(10, 149, 255);
+    background-color: #0074cc;
     cursor: pointer;
   }
 `;
@@ -49,9 +49,11 @@ const Inputcontainer = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 0 10px 10px 10px;
-  outline: 1px solid black;
+  outline: 1px solid #737373;
   border-radius: 20px;
   margin: 10px 5px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   p {
     margin: 15px 0;
@@ -63,7 +65,8 @@ const Input = styled.input`
   height: 28px;
   font-size: 1.2rem;
   padding: 0.5rem 1rem;
-  outline: none;
+  outline: 1px solid #737373;
+  box-shadow: inset rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border: none;
   border-radius: 31px;
   background-color: #fff;

@@ -5,7 +5,6 @@ const FooterCont = styled.footer`
   flex-direction: column;
   font-size: 15px;
   line-height: 20px;
-  margin-top: 10px;
   border-top: thin solid gray;
   color: #33353d;
 
