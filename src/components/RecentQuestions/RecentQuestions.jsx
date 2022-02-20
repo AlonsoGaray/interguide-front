@@ -95,7 +95,11 @@ const RecentQuestions = () => {
     <Container>
       <TopContainer>
         <h1 className="title">Recent Questions</h1>
-        <button type="button" onClick={() => navigate('/post-question')}>
+        <button
+          type="button"
+          onClick={() => navigate('/post-question')}
+          data-cy="post-question-btn"
+        >
           Post a Question
         </button>
       </TopContainer>
@@ -130,6 +134,7 @@ const RecentQuestions = () => {
                 <VoteContainer>
                   {!voteCheck ? (
                     <button
+                      data-cy="like-btn"
                       type="button"
                       id={q._id}
                       onClick={(e) => handleUpVote(e, e.target.id)}
@@ -138,6 +143,7 @@ const RecentQuestions = () => {
                     </button>
                   ) : (
                     <button
+                      data-cy="dislike-btn"
                       type="button"
                       id={q._id}
                       onClick={(e) => handleDownVote(e, e.target.id)}

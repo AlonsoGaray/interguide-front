@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-underscore-dangle */
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -139,6 +140,7 @@ const PostQuestion = () => {
             <p>Company</p>
             <Creatable
               name="company"
+              className="company"
               defaultValue={selectedCompany}
               onChange={setSelectedCompany}
               options={companies}
@@ -149,6 +151,7 @@ const PostQuestion = () => {
             <p>Question</p>
             <input
               className="input-question"
+              data-cy="question=input"
               name="question"
               id="question"
               type="text"
@@ -159,6 +162,7 @@ const PostQuestion = () => {
             <p>Tags</p>
             <Select
               name="tagsSelect"
+              className="tagsSelect"
               components={animatedComponents}
               onChange={setSelectedTags}
               options={tags}
@@ -171,6 +175,7 @@ const PostQuestion = () => {
             <EditorContainer>
               <Editor
                 apiKey={process.env.REACT_APP_TINY_MCE}
+                id="hola"
                 init={{
                   placeholder: 'Type Your Answer Here',
                   height: 300,
