@@ -3,6 +3,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AdvancedImage } from '@cloudinary/react';
+import Prism from 'prismjs';
+import 'prismjs/components/prism-c';
+import 'prismjs/components/prism-cpp';
+import 'prismjs/components/prism-ruby';
+import 'prismjs/components/prism-php';
+import 'prismjs/components/prism-csharp';
+import 'prismjs/components/prism-python';
+import 'prismjs/components/prism-java';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { useSelector, useDispatch } from 'react-redux';
 import { Editor } from '@tinymce/tinymce-react';
@@ -29,6 +37,7 @@ import {
   VoteContainer,
 } from './styled';
 import Loader from '../Loader';
+import './prism.css';
 
 const CLOUD = process.env.REACT_APP_CLOUD_NAME;
 
@@ -83,6 +92,12 @@ const QuestionDetail = () => {
   const voteCheck = questionSocket?.votes?.some(
     (qwe) => qwe.userId === user.id,
   );
+
+  useEffect(() => {
+    if (questionSocket?.answers?.length > 0) {
+      Prism.highlightAll();
+    }
+  }, [questionSocket]);
 
   useEffect(() => {
     const getQuestion = async () => {
@@ -191,7 +206,7 @@ const QuestionDetail = () => {
                   plugins: [
                     'advlist autolink lists link image charmap print preview anchor',
                     'searchreplace visualblocks code fullscreen',
-                    'insertdatetime media table paste code help wordcount',
+                    'insertdatetime media table paste help wordcount',
                     'codesample',
                   ],
                   toolbar:
@@ -200,6 +215,18 @@ const QuestionDetail = () => {
                     'alignright alignjustify | bullist numlist outdent indent | ' +
                     'removeformat | help ' +
                     'codesample',
+                  codesample_languages: [
+                    { text: 'HTML/XML', value: 'markup' },
+                    { text: 'JavaScript', value: 'javascript' },
+                    { text: 'CSS', value: 'css' },
+                    { text: 'PHP', value: 'php' },
+                    { text: 'Ruby', value: 'ruby' },
+                    { text: 'Python', value: 'python' },
+                    { text: 'Java', value: 'java' },
+                    { text: 'C', value: 'c' },
+                    { text: 'C#', value: 'csharp' },
+                    { text: 'C++', value: 'cpp' },
+                  ],
                   content_style:
                     'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                 }}
