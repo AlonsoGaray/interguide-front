@@ -7,7 +7,6 @@ import Prism from 'prismjs';
 import 'prismjs/components/prism-c';
 import 'prismjs/components/prism-cpp';
 import 'prismjs/components/prism-ruby';
-import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-csharp';
 import 'prismjs/components/prism-python';
 import 'prismjs/components/prism-java';
@@ -219,7 +218,6 @@ const QuestionDetail = () => {
                     { text: 'HTML/XML', value: 'markup' },
                     { text: 'JavaScript', value: 'javascript' },
                     { text: 'CSS', value: 'css' },
-                    { text: 'PHP', value: 'php' },
                     { text: 'Ruby', value: 'ruby' },
                     { text: 'Python', value: 'python' },
                     { text: 'Java', value: 'java' },
