@@ -4,7 +4,11 @@ import PersonIcon from '@mui/icons-material/Person';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { HeaderContainer, Logo } from './styled';
-import { getUserFromLocalStorage } from '../../store/actions';
+import {
+  getUserFromLocalStorage,
+  getCompaniesFromDB,
+  getTagsFromDB,
+} from '../../store/actions';
 import NavItem from '../NavItem/NavItem';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import SearchBar from '../SearchBar/SearchBar';
@@ -28,6 +32,16 @@ const Header = () => {
     if (user === null) {
       getUser();
     }
+
+    const getCompanies = async () => {
+      await getCompaniesFromDB(dispatch);
+    };
+    getCompanies();
+
+    const getTags = async () => {
+      await getTagsFromDB(dispatch);
+    };
+    getTags();
   }, []);
 
   return (

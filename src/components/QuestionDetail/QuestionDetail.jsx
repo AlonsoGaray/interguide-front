@@ -232,7 +232,7 @@ const QuestionDetail = () => {
                   setNewAnser(content);
                 }}
               />
-              <button type="submit" onClick={onClick}>
+              <button type="submit" onClick={onClick} disabled={!newAnswer}>
                 Submit
               </button>
             </NewAnswerContainer>

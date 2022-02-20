@@ -7,6 +7,7 @@ const FooterCont = styled.footer`
   line-height: 20px;
   border-top: thin solid gray;
   color: #33353d;
+  margin-top: 20px;
 
   h6 {
     color: #33353d;

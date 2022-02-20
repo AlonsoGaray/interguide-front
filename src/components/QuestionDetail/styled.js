@@ -148,6 +148,12 @@ const NewAnswerContainer = styled.div`
       background-color: #0074cc;
       cursor: pointer;
     }
+
+    &:disabled {
+      cursor: default;
+      background-color: gray;
+      box-shadow: none;
+    }
   }
 `;
 
