@@ -8,7 +8,7 @@ import Settings from './components/PerfilRight/Settings';
 import Home from './pages/Home/Home';
 import RecentQuestions from './components/RecentQuestions/RecentQuestions';
 // import Tags from './components/Tags/Tags';
-// import Questions from './components/Questions/Questions';
+import Questions from './components/Questions/Questions';
 import Companies from './components/Companies/Companies';
 import PostQuestion from './pages/PostQuestion/PostQuestion';
 import QuestionDetail from './components/QuestionDetail/QuestionDetail';
@@ -27,6 +27,7 @@ const App = () => {
           <Route path="" element={<Home />}>
             <Route path="" element={<RecentQuestions />} />
             <Route path="companies" element={<Companies />} />
+            <Route path="questions" element={<Questions />} />
 
             {/* Start Question */}
             <Route path="question">
@@ -42,7 +43,6 @@ const App = () => {
           </Route>
           {/* End Mi Perfil */}
         </Route>
-        <Route path="questions" element={<ComingSoon page="Questions" />} />
         <Route path="tags" element={<ComingSoon page="Tags" />} />
         <Route path="about" element={<ComingSoon page="About" />} />
         <Route path="contact-us" element={<ComingSoon page="Contact Us" />} />

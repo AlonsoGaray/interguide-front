@@ -85,7 +85,6 @@ const Companies = () => {
   const companiesFiltered = questionsSocket?.filter(
     (x) => x.company === companySelected?.value,
   );
-
   useEffect(() => {
     const getQuestions = async () => {
       await getQuestionsFromDB(dispatch);
