@@ -6,11 +6,15 @@ import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { useSelector, useDispatch } from 'react-redux';
 import { Editor } from '@tinymce/tinymce-react';
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import socket from '../../utils/socket';
 import {
   getQuestionById,
   patchQuestion,
   getUsersById,
+  upVoteQuestion,
+  downVoteQuestion,
 } from '../../store/actions';
 import {
   Container,
@@ -22,6 +26,7 @@ import {
   NewAnswerContainer,
   InfoContainer,
   SingleAnswerContainer,
+  VoteContainer,
 } from './styled';
 import Loader from '../Loader';
 
@@ -36,6 +41,24 @@ const QuestionDetail = () => {
 
   const [questionSocket, setQuestionSocket] = useState([]);
   const [newAnswer, setNewAnser] = useState('');
+
+  const handleUpVote = async (e, questionID) => {
+    e.preventDefault();
+    const data = {
+      questionID,
+      userId: user.id,
+    };
+    await upVoteQuestion(dispatch, data);
+  };
+
+  const handleDownVote = async (e, questionID) => {
+    e.preventDefault();
+    const data = {
+      questionID,
+      userId: user.id,
+    };
+    await downVoteQuestion(dispatch, data);
+  };
 
   const cld = new Cloudinary({
     cloud: {
@@ -56,6 +79,9 @@ const QuestionDetail = () => {
     .filter(unique);
   const userFiltered = usersById?.filter(
     (data) => data.id === questionById?.userId,
+  );
+  const voteCheck = questionSocket?.votes?.some(
+    (qwe) => qwe.userId === user.id,
   );
 
   useEffect(() => {
@@ -100,9 +126,29 @@ const QuestionDetail = () => {
               </p>
             </TopLeftContainer>
 
+            <VoteContainer>
+              {!voteCheck ? (
+                <button
+                  type="button"
+                  id={questionSocket._id}
+                  onClick={(e) => handleUpVote(e, e.target.id)}
+                >
+                  <ThumbUpOutlinedIcon className="normal" />
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  id={questionSocket._id}
+                  onClick={(e) => handleDownVote(e, e.target.id)}
+                >
+                  <ThumbUpIcon id={questionSocket._id} className="active" />
+                </button>
+              )}
+            </VoteContainer>
+
             <TopRightContainer>
               <p>Answers: {questionSocket.answers.length}</p>
-              <p>Votes: {questionSocket.vote}</p>
+              <p>Likes: {questionSocket.voteCount}</p>
               <p>Company: {questionSocket.company}</p>
             </TopRightContainer>
           </TopContainer>

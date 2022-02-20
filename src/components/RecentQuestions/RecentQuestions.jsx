@@ -1,12 +1,9 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { useSelector, useDispatch } from 'react-redux';
-import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import socket from '../../utils/socket';
@@ -145,10 +142,11 @@ const RecentQuestions = () => {
                       id={q._id}
                       onClick={(e) => handleDownVote(e, e.target.id)}
                     >
-                      <ThumbUpOutlinedIcon id={q._id} className="active" />
+                      <ThumbUpIcon id={q._id} className="active" />
                     </button>
                   )}
                 </VoteContainer>
+
                 <RightSingleContainer>
                   <p>Answers: {q.answers.length}</p>
                   <p>Likes: {q.voteCount}</p>
