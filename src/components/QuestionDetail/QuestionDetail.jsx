@@ -201,7 +201,7 @@ const QuestionDetail = () => {
                 apiKey={process.env.REACT_APP_TINY_MCE}
                 init={{
                   placeholder: 'Type Your Answer Here',
-                  height: 300,
+                  height: 400,
                   plugins: [
                     'advlist autolink lists link image charmap print preview anchor',
                     'searchreplace visualblocks code fullscreen',
