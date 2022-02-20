@@ -79,6 +79,12 @@ const SubmitButton = styled.button`
     background-color: #0074cc;
     cursor: pointer;
   }
+
+  &:disabled {
+    cursor: default;
+    background-color: gray;
+    box-shadow: none;
+  }
 `;
 
 const EditorContainer = styled.div`

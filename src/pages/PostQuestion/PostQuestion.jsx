@@ -14,12 +14,7 @@ import {
   SubmitButton,
   EditorContainer,
 } from './styled';
-import {
-  postQuestion,
-  getTagsFromDB,
-  getCompaniesFromDB,
-  postCompany,
-} from '../../store/actions';
+import { postQuestion, postCompany } from '../../store/actions';
 
 const animatedComponents = makeAnimated();
 
@@ -56,14 +51,14 @@ const PostQuestion = () => {
   });
 
   const [selectedCompany, setSelectedCompany] = useState(null);
-  const [selectedTags, setSelectedTags] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
   const [answer, setAnswer] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (selectedTags !== null) {
-      selectedTags.forEach((item) => {
+      selectedTags?.forEach((item) => {
         form.tag.push({
           _id: item.id,
           name: item.label,
@@ -110,8 +105,8 @@ const PostQuestion = () => {
       if (
         Object.keys(form)?.length >= 1 &&
         form?.question?.length > 5 &&
-        answer !== null &&
-        selectedCompany !== null
+        selectedCompany !== null &&
+        selectedTags?.length > 0
       ) {
         return setFormOk(true);
       }
@@ -119,17 +114,6 @@ const PostQuestion = () => {
     };
     validateForm();
   }, [handleChange]);
-
-  useEffect(() => {
-    const getTags = async () => {
-      await getTagsFromDB(dispatch);
-    };
-    getTags();
-    const getCompanies = async () => {
-      await getCompaniesFromDB(dispatch);
-    };
-    getCompanies();
-  }, []);
 
   return (
     <div>
