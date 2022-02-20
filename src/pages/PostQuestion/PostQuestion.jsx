@@ -178,10 +178,10 @@ const PostQuestion = () => {
                 id="hola"
                 init={{
                   placeholder: 'Type Your Answer Here',
-                  height: 300,
+                  height: 400,
                   plugins: [
                     'advlist autolink lists link image charmap print preview anchor',
-                    'searchreplace visualblocks code fullscreen',
+                    'searchreplace visualblocks fullscreen',
                     'insertdatetime media table paste code help wordcount',
                     'codesample',
                   ],
@@ -191,6 +191,17 @@ const PostQuestion = () => {
                     'alignright alignjustify | bullist numlist outdent indent | ' +
                     'removeformat | help ' +
                     'codesample',
+                  codesample_languages: [
+                    { text: 'HTML/XML', value: 'markup' },
+                    { text: 'JavaScript', value: 'javascript' },
+                    { text: 'CSS', value: 'css' },
+                    { text: 'Ruby', value: 'ruby' },
+                    { text: 'Python', value: 'python' },
+                    { text: 'Java', value: 'java' },
+                    { text: 'C', value: 'c' },
+                    { text: 'C#', value: 'csharp' },
+                    { text: 'C++', value: 'cpp' },
+                  ],
                   content_style:
                     'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
                 }}
