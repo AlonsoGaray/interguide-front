@@ -5,6 +5,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100vh;
+  width: 100vw;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
