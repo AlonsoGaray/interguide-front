@@ -46,9 +46,15 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Logo onClick={() => navigate('/')}>interguide</Logo>
-      <Link className="quiz" to="/quiz">
-        Take a Quiz
-      </Link>
+      {user ? (
+        <Link className="quiz" to="/quiz">
+          Take a Quiz
+        </Link>
+      ) : (
+        <Link className="quiz" to="/register">
+          Take a Quiz
+        </Link>
+      )}
       {user ? (
         <NavItem handleClick={() => setOpen(!open)} icon={<PersonIcon />}>
           {open && (
