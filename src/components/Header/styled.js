@@ -13,6 +13,19 @@ const HeaderContainer = styled.header`
     width: 30px;
     height: 30px;
   }
+
+  .quiz {
+    font-family: 'Lato', sans-serif;
+    margin-left: 20px;
+    color: rgb(10, 149, 255);
+    text-decoration: none;
+    font-size: 24px;
+
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 `;
 
 const Logo = styled.h1`

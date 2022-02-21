@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import PersonIcon from '@mui/icons-material/Person';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HeaderContainer, Logo } from './styled';
 import {
   getUserFromLocalStorage,
@@ -11,7 +11,6 @@ import {
 } from '../../store/actions';
 import NavItem from '../NavItem/NavItem';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
-import SearchBar from '../SearchBar/SearchBar';
 import LoginButton from '../LoginButton/LoginButton';
 
 const Header = () => {
@@ -47,7 +46,9 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Logo onClick={() => navigate('/')}>interguide</Logo>
-      <SearchBar />
+      <Link className="quiz" to="/quiz">
+        Take a Quiz
+      </Link>
       {user ? (
         <NavItem handleClick={() => setOpen(!open)} icon={<PersonIcon />}>
           {open && (
