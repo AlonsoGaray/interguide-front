@@ -13,7 +13,7 @@ import Companies from './components/Companies/Companies';
 import PostQuestion from './pages/PostQuestion/PostQuestion';
 import QuestionDetail from './components/QuestionDetail/QuestionDetail';
 import ComingSoon from './components/ComingSoon/ComingSoon';
-import Quiz from './components/Quiz/Quiz';
+// import Quiz from './components/Quiz/Quiz';
 import './App.css';
 
 const App = () => {
@@ -52,7 +52,7 @@ const App = () => {
           path="privacy-policy"
           element={<ComingSoon page="Privacy Policy" />}
         />
-        <Route path="/quiz" element={<Quiz />} />
+        {/* <Route path="/quiz" element={<Quiz />} /> */}
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Routes>
