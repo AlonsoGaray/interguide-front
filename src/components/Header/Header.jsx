@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import PersonIcon from '@mui/icons-material/Person';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { HeaderContainer, Logo } from './styled';
 import {
   getUserFromLocalStorage,
@@ -46,9 +46,15 @@ const Header = () => {
   return (
     <HeaderContainer>
       <Logo onClick={() => navigate('/')}>interguide</Logo>
-      <Link className="quiz" to="/quiz">
-        Take a Quiz
-      </Link>
+      {/* {user ? (
+        <Link className="quiz" to="/quiz">
+          Take a Quiz
+        </Link>
+      ) : (
+        <Link className="quiz" to="/register">
+          Take a Quiz
+        </Link>
+      )} */}
       {user ? (
         <NavItem handleClick={() => setOpen(!open)} icon={<PersonIcon />}>
           {open && (
