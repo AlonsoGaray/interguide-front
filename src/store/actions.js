@@ -15,6 +15,7 @@ import {
   GET_QUESTION_BY_ID,
   PATCH_QUESTION,
   GET_USERS_BY_ID,
+  PATCH_USER,
 } from './constants';
 
 import authService from '../services/auth';
@@ -279,38 +280,6 @@ export const downVoteQuestion = async (dispatch, data) => {
   }
 };
 
-export const neutralUpVoteQuestion = async (dispatch, data) => {
-  dispatch({ type: SET_LOADING, payload: true });
-  try {
-    const response = await questionService.neutralUpVoteQuestion(data);
-
-    if (!response.ok) {
-      dispatch({ type: PATCH_QUESTION, payload: [] });
-    }
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
-  } finally {
-    dispatch({ type: SET_LOADING, payload: false });
-  }
-};
-
-export const neutralDownVoteQuestion = async (dispatch, data) => {
-  dispatch({ type: SET_LOADING, payload: true });
-  try {
-    const response = await questionService.neutralDownVoteQuestion(data);
-
-    if (!response.ok) {
-      dispatch({ type: PATCH_QUESTION, payload: [] });
-    }
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error(error);
-  } finally {
-    dispatch({ type: SET_LOADING, payload: false });
-  }
-};
-
 export const postCompany = async (dispatch, company) => {
   dispatch({ type: SET_LOADING, payload: true });
   try {
@@ -340,6 +309,38 @@ export const getCompaniesFromDB = async (dispatch) => {
 
     if (response.ok) {
       dispatch({ type: GET_ALL_COMPANIES, payload: data });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const plusPoints = async (dispatch, userID) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await userService.plusPoints(userID);
+
+    if (!response.ok) {
+      dispatch({ type: PATCH_USER, payload: [] });
+    }
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error(error);
+  } finally {
+    dispatch({ type: SET_LOADING, payload: false });
+  }
+};
+
+export const lessPoints = async (dispatch, userID) => {
+  dispatch({ type: SET_LOADING, payload: true });
+  try {
+    const response = await userService.lessPoints(userID);
+
+    if (!response.ok) {
+      dispatch({ type: PATCH_USER, payload: [] });
     }
   } catch (error) {
     // eslint-disable-next-line no-console

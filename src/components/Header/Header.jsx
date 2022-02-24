@@ -1,9 +1,12 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import useOnclickOutside from 'react-cool-onclickoutside';
 import PersonIcon from '@mui/icons-material/Person';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { HeaderContainer, Logo } from './styled';
+import socket from '../../utils/socket';
 import {
   getUserFromLocalStorage,
   getCompaniesFromDB,
@@ -18,6 +21,7 @@ const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
 
+  const [userSocket, setUserSocket] = useState();
   const [open, setOpen] = useState(false);
 
   const ref = useOnclickOutside(() => {
@@ -41,7 +45,21 @@ const Header = () => {
       await getTagsFromDB(dispatch);
     };
     getTags();
+    // setUserSocket(user);
   }, []);
+
+  useEffect(() => {
+    setUserSocket(user);
+    socket.on('user:update', (data) => {
+      if (user?.id === data._id) {
+        setUserSocket(data);
+      }
+    });
+
+    return () => {
+      socket.off('user:update');
+    };
+  }, [user]);
 
   return (
     <HeaderContainer>
@@ -56,13 +74,16 @@ const Header = () => {
         </Link>
       )} */}
       {user ? (
-        <NavItem handleClick={() => setOpen(!open)} icon={<PersonIcon />}>
-          {open && (
-            <div ref={ref}>
-              <DropdownMenu />
-            </div>
-          )}
-        </NavItem>
+        <>
+          <p>Points: {userSocket ? userSocket.points : '0'}</p>
+          <NavItem handleClick={() => setOpen(!open)} icon={<PersonIcon />}>
+            {open && (
+              <div ref={ref}>
+                <DropdownMenu />
+              </div>
+            )}
+          </NavItem>
+        </>
       ) : (
         <LoginButton />
       )}

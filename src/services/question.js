@@ -99,36 +99,6 @@ const downVoteQuestion = ({ questionID, userId }) => {
   return fetch(`${URL_BASE}/api/questions/rate/downvote`, payload);
 };
 
-const neutralUpVoteQuestion = ({ questionID, userId }) => {
-  const accessTokenObj = localStorage.getItem('token');
-
-  const payload = {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessTokenObj}`,
-    },
-    body: JSON.stringify({ questionID, userId }),
-  };
-
-  return fetch(`${URL_BASE}/api/questions/rate/neutralUp`, payload);
-};
-
-const neutralDownVoteQuestion = ({ questionID, userId }) => {
-  const accessTokenObj = localStorage.getItem('token');
-
-  const payload = {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessTokenObj}`,
-    },
-    body: JSON.stringify({ questionID, userId }),
-  };
-
-  return fetch(`${URL_BASE}/api/questions/rate/neutralDown`, payload);
-};
-
 const question = {
   createQuestion,
   getAllQuestions,
@@ -136,8 +106,6 @@ const question = {
   patchQuestion,
   upVoteQuestion,
   downVoteQuestion,
-  neutralUpVoteQuestion,
-  neutralDownVoteQuestion,
 };
 
 export default question;

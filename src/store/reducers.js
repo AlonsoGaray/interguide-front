@@ -15,6 +15,7 @@ import {
   GET_QUESTION_BY_ID,
   PATCH_QUESTION,
   GET_USERS_BY_ID,
+  PATCH_USER,
 } from './constants';
 
 const initialState = {
@@ -93,6 +94,12 @@ function reducer(state = initialState, action = '') {
       return {
         ...state,
         questionById: newValue,
+      };
+    }
+    case PATCH_USER: {
+      return {
+        ...state,
+        user: newValue,
       };
     }
     case GET_ALL_TAGS: {
