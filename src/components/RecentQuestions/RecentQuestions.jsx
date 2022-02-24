@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -22,6 +23,8 @@ import {
   getQuestionsFromDB,
   upVoteQuestion,
   downVoteQuestion,
+  plusPoints,
+  lessPoints,
 } from '../../store/actions';
 import Loader from '../Loader';
 
@@ -35,22 +38,30 @@ const RecentQuestions = () => {
   const dispatch = useDispatch();
   const [questionsSocket, setQuestionsSocket] = useState([]);
 
-  const handleUpVote = async (e, questionID) => {
+  const handleUpVote = async (e, questionID, userID) => {
     e.preventDefault();
     const data = {
       questionID,
       userId: user.id,
     };
     await upVoteQuestion(dispatch, data);
+
+    if (user?.id !== userID) {
+      await plusPoints(dispatch, { userID });
+    }
   };
 
-  const handleDownVote = async (e, questionID) => {
+  const handleDownVote = async (e, questionID, userID) => {
     e.preventDefault();
     const data = {
       questionID,
       userId: user.id,
     };
     await downVoteQuestion(dispatch, data);
+
+    if (user?.id !== userID) {
+      await lessPoints(dispatch, { userID });
+    }
   };
 
   const cld = new Cloudinary({
@@ -137,7 +148,10 @@ const RecentQuestions = () => {
                       data-cy="like-btn"
                       type="button"
                       id={q._id}
-                      onClick={(e) => handleUpVote(e, e.target.id)}
+                      name={q.userId}
+                      onClick={(e) =>
+                        handleUpVote(e, e.target.id, e.target.name)
+                      }
                     >
                       <ThumbUpOutlinedIcon className="normal" />
                     </button>
@@ -146,7 +160,10 @@ const RecentQuestions = () => {
                       data-cy="dislike-btn"
                       type="button"
                       id={q._id}
-                      onClick={(e) => handleDownVote(e, e.target.id)}
+                      name={q.userId}
+                      onClick={(e) =>
+                        handleDownVote(e, e.target.id, e.target.name)
+                      }
                     >
                       <ThumbUpIcon id={q._id} className="active" />
                     </button>

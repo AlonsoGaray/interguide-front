@@ -12,3 +12,4 @@ export const GET_ALL_TAGS = 'get-all-tags';
 export const POST_COMPANY = 'post-company';
 export const GET_ALL_COMPANIES = 'get-all-companies';
 export const PATCH_QUESTION = 'patch-question';
+export const PATCH_USER = 'patch-user';
