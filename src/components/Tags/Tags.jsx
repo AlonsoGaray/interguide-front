@@ -209,7 +209,7 @@ const Tags = () => {
       ) : (
         <UnselectedContainer>
           <ArrowUpwardIcon />
-          <p>Select a company</p>
+          <p>Select a tag</p>
         </UnselectedContainer>
       )}
     </Container>
