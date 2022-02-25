@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AdvancedImage } from '@cloudinary/react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { Link } from 'react-router-dom';
-import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { postUploadFile } from '../../store/actions';
 import {
   SuperContainer,
@@ -94,8 +93,6 @@ const PerfilLeft = () => {
               onChange={onChangeFile}
               accept="image/*"
             />
-
-            <AddPhotoAlternateIcon />
           </InputGroup>
 
           <UpdateButton type="button" onClick={onSubmitFoto}>
