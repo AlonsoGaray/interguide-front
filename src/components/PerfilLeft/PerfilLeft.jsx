@@ -77,7 +77,7 @@ const PerfilLeft = () => {
 
       <PhotoContainer display={toggleClassBtnUser} id="menu-perfil">
         <Form>
-          <h4>Cambie su foto</h4>
+          <h4>Change your photo</h4>
 
           <CloseButton type="button" onClick={handlerUserPhoto}>
             &times;
@@ -96,7 +96,7 @@ const PerfilLeft = () => {
           </InputGroup>
 
           <UpdateButton type="button" onClick={onSubmitFoto}>
-            Actualizar
+            Update
           </UpdateButton>
         </Form>
       </PhotoContainer>
