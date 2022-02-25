@@ -187,7 +187,7 @@ const VoteContainer = styled.div`
 const UserInfoContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 35%;
+  width: 100%;
   margin: 0 10px;
 
   p {
@@ -198,6 +198,17 @@ const UserInfoContainer = styled.div`
     height: 25px;
     border-radius: 50%;
     margin-left: 5px;
+  }
+  .points {
+    font-size: 14px;
+  }
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (min-width: 769px) {
+    width: 45%;
   }
 `;
 

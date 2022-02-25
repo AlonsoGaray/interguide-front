@@ -3,6 +3,8 @@ import styled from 'styled-components';
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-top: 30px;
   width: 100%;
 
 
@@ -33,6 +35,7 @@ const Container = styled.div`
     justify-content: center;
     width: 69%;
     box-shadow: 2px 2px 50px 2px rgba(0, 0, 0, 0.2);
+  padding-top: 0;
   }
 `;
 

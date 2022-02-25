@@ -50,6 +50,7 @@ const ProfileButton = styled.button`
   border-radius: 100%;
   border-style: solid;
   margin-top: 10px;
+  padding: 0;
 
   &:hover {
     cursor: pointer;

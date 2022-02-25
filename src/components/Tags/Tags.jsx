@@ -9,6 +9,7 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { useSelector, useDispatch } from 'react-redux';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import StarIcon from '@mui/icons-material/Star';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import socket from '../../utils/socket';
 import {
@@ -158,6 +159,8 @@ const Tags = () => {
                         {filtered[0]?.lastName}
                       </p>
                       <AdvancedImage cldImg={photo} />
+                      <StarIcon />
+                      <p className="points">{filtered[0]?.points}</p>
                     </UserInfoContainer>
                     <Link to={`/question/${q._id}`}>{q.question}</Link>
                     <div className="tags">
