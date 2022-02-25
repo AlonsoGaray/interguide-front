@@ -84,7 +84,7 @@ const PerfilLeft = () => {
           </CloseButton>
 
           <InputGroup>
-            <p>Foto</p>
+            <p>Photo</p>
 
             <input
               type="file"
