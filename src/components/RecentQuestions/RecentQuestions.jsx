@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { Cloudinary } from '@cloudinary/url-gen';
 import { useSelector, useDispatch } from 'react-redux';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import StarIcon from '@mui/icons-material/Star';
 import socket from '../../utils/socket';
 import {
   Container,
@@ -131,6 +131,8 @@ const RecentQuestions = () => {
                       {filtered[0]?.lastName}
                     </p>
                     <AdvancedImage cldImg={photo} />
+                    <StarIcon />
+                    <p className="points">{filtered[0]?.points}</p>
                   </UserInfoContainer>
                   <Link to={`/question/${q._id}`}>{q.question}</Link>
                   <div className="tags">
