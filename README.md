@@ -59,7 +59,7 @@ To get a local copy up and running follow these simple example steps.
    git clone https://github.com/AlonsoGaray/interguide-front.git
    ```
    ```sh
-   git clone https://github.com/AlonsoGaray/interguide-back
+   git clone https://github.com/AlonsoGaray/interguide-back.git
    ```
 2. Install NPM packages
    ```sh
