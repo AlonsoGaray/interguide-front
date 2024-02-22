@@ -82,6 +82,7 @@ Distributed under the MIT License.
 
 Alonso Garay - alonsogarayp@gmail.com
 
-Project Link: [https://github.com/AlonsoGaray/interguide-front](https://github.com/AlonsoGaray/interguide-front)
+Frontend Github Link: [https://github.com/AlonsoGaray/interguide-front](https://github.com/AlonsoGaray/interguide-front)
+Backend Github Link: [https://github.com/AlonsoGaray/interguide-back](https://github.com/AlonsoGaray/interguide-back)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
